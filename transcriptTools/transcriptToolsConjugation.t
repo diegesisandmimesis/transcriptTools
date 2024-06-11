@@ -1,0 +1,66 @@
+#charset "us-ascii"
+//
+// transcriptToolsConjugation.t
+//
+//	Conjugations for irregular verbs used by the default report
+//	summaries.
+//
+//
+#include <adv3.h>
+#include <en_us.h>
+
+#include "transcriptTools.h"
+
+modify TAction
+	conjugation = nil
+
+	verbPattern = static new RexPattern('(.*)(?=/)')
+
+	verbName() {
+		rexMatch(verbPattern, verbPhrase);
+		return(rexGroup(1)[3]);
+	}
+
+	conjugateVerb(str) {
+		if(conjugation != nil)
+			return(conjugation);
+
+		return(gActor.conjugateRegularVerb(str));
+	}
+
+	conjugateVerbPhrase(str) {
+		local cName, vName;
+
+		vName = verbName();
+		cName = conjugateVerb(vName);
+
+		if(vName != cName)
+			str = rexReplace('%<' + vName + '%>', str,
+				cName, ReplaceAll);
+
+		return(str);
+	}
+
+	_actionClause(dobjStr, iobjStr?){
+		return(getVerbPhrase1(true, verbPhrase, dobjStr, nil));
+	}
+
+	actionClause(dobjStr, iobjStr?) {
+		return(conjugateVerbPhrase(_actionClause(dobjStr, iobjStr)));
+	}
+	
+;
+
+modify TIAction
+	_actionClause(dobjStr, iobjStr) {
+		return(getVerbPhrase2(true, verbPhrase, dobjStr, nil, iobjStr));
+	}
+;
+
+modify TakeAction conjugation = '{take[s]|took}';
+modify TakeFromAction conjugation = '{take[s]|took}';
+modify DropAction conjugation = 'drop{s/ped}';
+modify PutOnAction conjugation = '{put[s]|put}';
+modify PutInAction conjugation = '{put[s]|put}';
+modify PutUnderAction conjugation = '{put[s]|put}';
+modify PutBehindAction conjugation = '{put[s]|put}';

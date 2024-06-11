@@ -1,0 +1,9 @@
+name: transcriptTools Library
+source: transcriptTools/transcriptTools.t
+source: transcriptTools/transcriptToolsMods.t
+source: transcriptTools/transcriptToolsConjugation.t
+source: transcriptTools/transcriptToolsTransform.t
+source: transcriptTools/reportManager.t
+source: transcriptToolsDebugger/transcriptToolsDebugger.t
+source: transcriptToolsDebugger/transcriptToolsDebuggerMods.t
+source: transcriptToolsDebugger/transcriptToolsDebuggerAction.t
