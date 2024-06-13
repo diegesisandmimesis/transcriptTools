@@ -10,25 +10,19 @@
 
 #include "transcriptTools.h"
 
-// Module ID for the library
-transcriptToolsModuleID: ModuleID {
-        name = 'Transcript Tools Library'
-        byline = 'Diegesis & Mimesis'
-        version = '1.0'
-        listingOrder = 99
-}
-
 // Generic class for stuff in the module.
 class TranscriptToolsObject: Syslog syslogID = 'transcriptTools';
 
-// Class for high-level "manager"-type objects that can be toggled on
-// and off.
-class TranscriptToolsWidget: TranscriptToolsObject
+class TranscriptToolsToggle: TranscriptToolsObject
 	active = true
 
 	getActive() { return(active == true); }
 	setActive(v) { active = (v ? true : nil); }
+;
 
+// Class for high-level "manager"-type objects that can be toggled on
+// and off.
+class TranscriptToolsWidget: TranscriptToolsToggle
 	// Wrappers for the base methods, only calls them when we're active
 	_preprocess(t, v) { if(getActive()) preprocess(t, v); }
 	_run(t, v) { if(getActive()) run(t, v); }
@@ -48,9 +42,6 @@ class TranscriptToolsWidget: TranscriptToolsObject
 // Abstract class for widgets that operate on (group, sort, or whatever)
 // the entire transcript.
 class TranscriptTool: TranscriptToolsWidget
-	// The TranscriptTools instance we're a part of
-	parentTools = nil
-
 	// Numeric priority for the tool.
 	// Lower-numbered tools go before higher-numbered tools.  Basic
 	// ordering is something like:
@@ -65,7 +56,7 @@ class TranscriptTool: TranscriptToolsWidget
 	// Called at preinit
 	initializeTranscriptTool() {
 		if(location == nil) return;
-		location.addTranscriptTool(self);
+		location.addTranscriptTool(self, true);
 	}
 ;
 
@@ -126,12 +117,14 @@ transcriptTools: TranscriptToolsWidget
 	}
 
 	// Add the given widget to our list
-	addTranscriptTool(obj) {
+	addTranscriptTool(obj, skipSort?) {
 		if((obj == nil) || !obj.ofKind(TranscriptTool))
 			return(nil);
 
 		_transcriptTools.append(obj);
-		obj.parentTools = self;
+
+		if(!skipSort)
+			sortTranscriptTools();
 
 		return(true);
 	}
@@ -147,9 +140,9 @@ transcriptTools: TranscriptToolsWidget
 	}
 
 	// Main turn lifecycle methods
-	preprocess(t, v) { forEachTool({ x: x._preprocess(t, v) }); }
-	run(t, v) { forEachTool({ x: x._run(t, v) }); }
-	postprocess(t, v) { forEachTool({ x: x._postprocess(t, v) }); }
+	preprocessEntry(t, v) { forEachTool({ x: x._preprocess(t, v) }); }
+	runEntry(t, v) { forEachTool({ x: x._run(t, v) }); }
+	postprocessEntry(t, v) { forEachTool({ x: x._postprocess(t, v) }); }
 	clear() { forEachTool({ x: x.clear() }); }
 
 	forEachTool(fn) { _transcriptTools.forEach({ x: (fn)(x) }); }

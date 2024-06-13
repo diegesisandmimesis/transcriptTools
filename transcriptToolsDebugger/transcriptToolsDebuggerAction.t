@@ -9,6 +9,24 @@
 
 #ifdef __DEBUG
 
+DefineSystemAction(TranscriptToolsDebuggerStatus)
+	execSystemAction() {
+		local d;
+
+		d = __transcriptToolDebugger;
+
+		"\nactive = <<toString(d.getActive())>>\n ";
+		"\npreprocess = <<toString(d._activePreprocess)>>\n ";
+		"\nrun = <<toString(d._activeRun)>>\n ";
+		"\npostprocess = <<toString(d._activePostprocess)>>\n ";
+	}
+;
+VerbRule(TranscriptToolsDebuggerStatus)
+	'tti' ( 'status' | '?' ) : TranscriptToolsDebuggerStatusAction
+	verbPhrase = 'transcript tools status'
+;
+
+
 DefineSystemAction(TranscriptToolsDebuggerOn)
 	execSystemAction() {
 		if(__transcriptToolDebugger.getActive() == true) {
@@ -37,21 +55,6 @@ DefineSystemAction(TranscriptToolsDebuggerOff)
 VerbRule(TranscriptToolsDebuggerOff)
 	'tti' 'off' : TranscriptToolsDebuggerOffAction
 	verbPhrase = 'transcript tools off'
-;
-
-modify Action
-	transcriptToolsDebuggerAfterActionMain() {
-		if(ofKind(SystemAction))
-			return;
-		if(parentAction != nil)
-			return;
-		__transcriptToolDebugger.afterActionMain();
-	}
-
-	afterActionMain() {
-		inherited();
-		transcriptToolsDebuggerAfterActionMain();
-	}
 ;
 
 #endif // __DEBUG

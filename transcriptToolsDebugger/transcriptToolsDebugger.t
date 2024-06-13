@@ -61,8 +61,8 @@ class TTICommand: TTIObject
 		if(v.dobj_)
 			v.dobj_._debugDobj(ind);
 		if(v.messageProp_)
-			output('messageProp_: &amp;<<toString(v.messageProp_)>>',
-				nil, ind);
+			output('messageProp_:
+				&amp;<<toString(v.messageProp_)>>', nil, ind);
 		if(v.messageText_ && (v.messageText_.length > 0))
 			output('<<_tt.v2s(v.messageText_).htmlify()>>',
 				nil, ind + 1);
@@ -72,6 +72,12 @@ class TTICommand: TTIObject
 // The debugger itself
 __transcriptToolDebugger: PreinitObject
 	active = nil			// boolean flag. if set, run next turn
+
+	_actionFlag = nil
+
+	_activePreprocess = nil		// do we run during preprocessing
+	_activeRun = nil		// do we run during main processing
+	_activePostprocess = true	// do we run during postprocessing
 
 	prompt = '&gt;&gt;&gt; '	// debugger prompt
 	prefix = ''			// output prefix
@@ -144,11 +150,38 @@ __transcriptToolDebugger: PreinitObject
 	getActive() { return(active == true); }
 	setActive(v) { active = v; }
 
-	// Entry point from Action.afterActionMain()
+	getActionFlag() { return(_actionFlag == true); }
+	setActionFlag(v) { _actionFlag = (v ? true : nil); }
+
+	runThisTurn(v) { return(v && getActive); }
+
+	preprocess(t, v) {
+		if(!runThisTurn(_activePreprocess))
+			return;
+		output('===before preprocessing===');
+		debugger(t, v);
+	}
+
+	run(t, v) {
+		if(!_activeRun || !getActive())
+			return;
+		if(!runThisTurn(_activeRun))
+			return;
+		output('===after main processing===');
+		debugger(t, v);
+	}
+
+	postprocess(t, v) {
+		if(!runThisTurn(_activePostprocess))
+			return;
+		output('===after postprocessing===');
+		debugger(t, v);
+	}
+
 	afterActionMain() {
 		if(!getActive())
 			return;
-		debugger();
+		debugger(gTranscript, gTranscript.reports_);
 	}
 
 	// Handle the debugger lock
@@ -160,14 +193,14 @@ __transcriptToolDebugger: PreinitObject
 	}
 
 	// Main debugger loop
-	debugger() {
+	debugger(t, v) {
 		// See if we can set the lock; bail if we can't
 		if(!_setDebuggerLock(true))
 			return;
 
 		// Switch from the game output stream/transcript to
 		// the debugger stream/transcript
-		setDebugOutput();
+		setDebugOutput(t, v);
 
 		// Startup banner
 		"\n \n===breakpoint in afterActionMain()===\n ";
@@ -185,7 +218,7 @@ __transcriptToolDebugger: PreinitObject
 			if(handleDebuggerCommand(cmd) != true) {
 				// Switch the output stream and transcript
 				// back to where they were before we started
-				unsetDebugOutput();
+				unsetDebugOutput(t, v);
 
 				// Clear our lock
 				_setDebuggerLock(nil);
@@ -198,12 +231,10 @@ __transcriptToolDebugger: PreinitObject
 
 	// Turn off the game's main transcript and output stream, substituting
 	// our own.
-	setDebugOutput() {
-		//ttiOutputFilter.activate();
-
+	setDebugOutput(t, v) {
 		// Remember the current settings, so we can restore them later
 		stream = outputManager.curOutputStream;
-		transcript = gTranscript;
+		transcript = t;
 		
 		// Set our new stream and transcript
 		outputManager.setOutputStream(new TTIOutputStream);
@@ -211,11 +242,10 @@ __transcriptToolDebugger: PreinitObject
 	}
 
 	// Undo the stuff we did in setDebugOutput() above
-	unsetDebugOutput() {
+	unsetDebugOutput(t, v) {
 		outputManager.setOutputStream(stream);
 		outputManager.curTranscript = transcript;
 		gTranscript = transcript;
-		//ttiOutputFilter.deactivate();
 
 		transcript = nil;
 	}

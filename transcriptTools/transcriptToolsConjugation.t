@@ -48,7 +48,6 @@ modify TAction
 	actionClause(dobjStr, iobjStr?) {
 		return(conjugateVerbPhrase(_actionClause(dobjStr, iobjStr)));
 	}
-	
 ;
 
 modify TIAction
