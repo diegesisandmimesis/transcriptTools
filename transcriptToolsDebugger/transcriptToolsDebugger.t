@@ -81,6 +81,8 @@ __transcriptToolDebugger: PreinitObject
 
 	prompt = '&gt;&gt;&gt; '	// debugger prompt
 	prefix = ''			// output prefix
+	spacer = '====='		// output spacer.  nil for none
+	padding = '==='			// padding for debug banners
 	_indentChr = '\t'		// indentation character
 
 	transcript = nil		// saved "real" transcript
@@ -158,8 +160,7 @@ __transcriptToolDebugger: PreinitObject
 	preprocess(t, v) {
 		if(!runThisTurn(_activePreprocess))
 			return;
-		output('===before preprocessing===');
-		debugger(t, v);
+		debugger(t, v, 'preprocessing');
 	}
 
 	run(t, v) {
@@ -167,15 +168,13 @@ __transcriptToolDebugger: PreinitObject
 			return;
 		if(!runThisTurn(_activeRun))
 			return;
-		output('===after main processing===');
-		debugger(t, v);
+		debugger(t, v, 'processing');
 	}
 
 	postprocess(t, v) {
 		if(!runThisTurn(_activePostprocess))
 			return;
-		output('===after postprocessing===');
-		debugger(t, v);
+		debugger(t, v, 'postprocessing');
 	}
 
 	afterActionMain() {
@@ -192,8 +191,12 @@ __transcriptToolDebugger: PreinitObject
 		return(true);
 	}
 
+	banner(txt) {
+		output('<<padding>><<txt>><<padding>>');
+	}
+
 	// Main debugger loop
-	debugger(t, v) {
+	debugger(t, v, lbl) {
 		// See if we can set the lock; bail if we can't
 		if(!_setDebuggerLock(true))
 			return;
@@ -202,15 +205,20 @@ __transcriptToolDebugger: PreinitObject
 		// the debugger stream/transcript
 		setDebugOutput(t, v);
 
+		if(lbl == nil)
+			lbl = 'unknown';
+
 		// Startup banner
-		"\n \n===breakpoint in afterActionMain()===\n ";
-		"\n===type HELP or ? for information on the interactive
-			debugger===\n ";
+		banner('breakpoint in <<lbl>>');
+		banner('type HELP or ? for information on the interactive
+			debugger');
 
 		// Input/command loop
 		for(;;) {
 			// Display our command prompt
-			"\n<<prompt>>";
+			// IMPORTANT:  we can't use output() here because
+			//	that would put a newline after the prompt
+			aioSay('\n<<prompt>>');
 
 			// Keep accepting and processing commands until
 			// the command handler returns nil
@@ -400,8 +408,8 @@ __transcriptToolDebugger: PreinitObject
 
 		i = nil;
 		_tt.transcript.reports_.forEach(function(o) {
-			if((i != nil) && (o.iter_ != i))
-				output('=====');
+			if((i != nil) && (o.iter_ != i) && (_tt.spacer != nil))
+				output(_tt.spacer);
 			_listReport(o);
 			i = o.iter_;
 		});
