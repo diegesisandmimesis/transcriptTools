@@ -41,18 +41,19 @@ modify TAction
 		return(str);
 	}
 
-	_actionClause(dobjStr, iobjStr?){
-		return(getVerbPhrase1(true, verbPhrase, dobjStr, nil));
+	_actionClause(dobjStr, iobjStr?, inf?) {
+		return(getVerbPhrase1(!inf, verbPhrase, dobjStr, nil));
 	}
 
-	actionClause(dobjStr, iobjStr?) {
-		return(conjugateVerbPhrase(_actionClause(dobjStr, iobjStr)));
+	actionClause(dobjStr, iobjStr?, inf?) {
+		return(conjugateVerbPhrase(_actionClause(dobjStr, iobjStr,
+			inf)));
 	}
 ;
 
 modify TIAction
-	_actionClause(dobjStr, iobjStr) {
-		return(getVerbPhrase2(true, verbPhrase, dobjStr, nil, iobjStr));
+	_actionClause(dobjStr, iobjStr, inf?) {
+		return(getVerbPhrase2(!inf, verbPhrase, dobjStr, nil, iobjStr));
 	}
 ;
 

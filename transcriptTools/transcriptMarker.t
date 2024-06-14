@@ -1,6 +1,6 @@
 #charset "us-ascii"
 //
-// transcriptMark.t
+// transcriptMarker.t
 //
 //	Tools to mark reports transcript-wide
 //

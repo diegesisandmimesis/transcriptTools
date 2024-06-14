@@ -20,6 +20,7 @@ modify transcriptTools
 	defaultTools = static [
 		MarkFailures,
 		TranscriptReportManager,
+		ImplicitGrouper,
 		CleanupAnnouncements
 	]
 ;

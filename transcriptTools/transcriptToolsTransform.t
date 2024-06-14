@@ -13,7 +13,7 @@ modify CommandTranscript
 	transforms_ = [
 		transcriptToolsTransformPreprocess,
 		defaultReportTransform,
-		implicitGroupTransform,
+		//implicitGroupTransform,
 		reportOrderTransform,
 		transcriptToolsTransformMain,
 		complexMultiTransform,

@@ -40,7 +40,6 @@ class TakeFailureSummary: ActionFailureSummary
 
 class ImplicitTakeSummary: ImplicitSummary
 	action = TakeAction
-	summarize(data) { return('first taking <<data.listDobjs()>>'); }
 ;
 
 

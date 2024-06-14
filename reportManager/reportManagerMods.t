@@ -45,22 +45,25 @@ modify CommandReport
 	listIobjsWithOr() { return(_orList(iobjList_)); }
 	listIobjs() { return(listIobjsWithAnd()); }
 
-	_actionClause(dList, iList) {
+	_actionClause(dList, iList, inf?) {
 		local a;
 
 		if((a = getAction()) == nil)
 			return(nil);
 
-		return(a.actionClause(dList, iList));
+		return(a.actionClause(dList, iList, inf));
 	}
 
-	actionClauseWithAnd() {
-		return(_actionClause(listDobjsWithAnd(), listIobjsWithAnd()));
+	actionClauseWithAnd(inf?) {
+		return(_actionClause(listDobjsWithAnd(), listIobjsWithAnd(),
+			inf));
 	}
 
-	actionClauseWithOr() {
-		return(_actionClause(listDobjsWithOr(), listIobjsWithOr()));
+	actionClauseWithOr(inf?) {
+		return(_actionClause(listDobjsWithOr(), listIobjsWithOr(),
+			inf));
 	}
 
-	actionClause() { return(actionClauseWithAnd()); }
+	actionClause(inf?) { return(actionClauseWithAnd(inf)); }
+
 ;

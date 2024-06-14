@@ -24,6 +24,8 @@ class ReportSummary: TranscriptToolsWidget
 
 	reportManager = nil		// our parent report manager
 
+	_summaryText = nil
+
 	// Lookup table mapping report classes to summary methods
 	_reportClasses = static [
 		ImplicitActionAnnouncement -> &_summarizeImplicit,
@@ -214,7 +216,9 @@ class ReportSummary: TranscriptToolsWidget
 		if((txt = summarize(r)) == nil)
 			return(nil);
 
-		return('<./p0>\n<.assume>' + txt + '<./assume>\n');
+		r._summaryText = txt;
+
+		return('<./p0>\n<.assume>first ' + txt + '<./assume>\n');
 	}
 ;
 
