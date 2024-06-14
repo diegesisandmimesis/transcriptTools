@@ -14,7 +14,7 @@ class ReportManager: TranscriptToolsWidget
 	reportManagerFor = nil
 	minSummaryLength = 2
 
-	reportManagerDefaultSummaries = nil
+	defaultReportSummaries = nil
 	_reportManagerSummaries = perInstance(new Vector())
 
 	initializeReportManager() {
@@ -58,20 +58,19 @@ class ReportManager: TranscriptToolsWidget
 		local l;
 
 		// No default summaries, nothing to do.
-		if(reportManagerDefaultSummaries == nil)
+		if(defaultReportSummaries == nil)
 			return;
 
 		// Make sure the list of defaults is list-ish.
-		if(!reportManagerDefaultSummaries.ofKind(Collection))
-			reportManagerDefaultSummaries
-				= [ reportManagerDefaultSummaries ];
+		if(!defaultReportSummaries.ofKind(Collection))
+			defaultReportSummaries = [ defaultReportSummaries ];
 
 		// This will hold the summaries we need to add.
-		l = new Vector(reportManagerDefaultSummaries.length);
+		l = new Vector(defaultReportSummaries.length);
 
 		// Go through the list of defaults, checking to see
 		// if we already have a summary for its action.
-		reportManagerDefaultSummaries.forEach(function(o) {
+		defaultReportSummaries.forEach(function(o) {
 			if(_checkForDuplicateSummary(o))
 				return;
 			l.appendUnique(o);
@@ -108,17 +107,15 @@ class ReportManager: TranscriptToolsWidget
 		return(true);
 	}
 
-	preprocess(t, v) { forEachSummary({ x: x._preprocess(t, v) }); }
+	//preprocess(t, v) { forEachSummary({ x: x._preprocess(t, v) }); }
 	run(t, v) { forEachSummary({ x: x._run(t, v) }); }
-	postprocess(t, v) { forEachSummary({ x: x._postprocess(t, v) }); }
+	//postprocess(t, v) { forEachSummary({ x: x._postprocess(t, v) }); }
 
 	forEachSummary(fn) {  _reportManagerSummaries.forEach({ x: fn(x) }); }
 ;
 
 // General non-object-specific report manager.
 class ActionReportManager: ReportManager
-	reportManagerDefaultSummaries = nil
-
 	matchReportDobj(obj) { return(obj != nil); }
 ;
 
@@ -127,7 +124,7 @@ class ActionReportManager: ReportManager
 class SelfReportManager: ReportManager
 	// SelfSummary is a bespoke summarizer designed for use with
 	// this report manager.
-	reportManagerDefaultSummaries = static [ SelfSummary ]
+	defaultReportSummaries = static [ SelfSummary ]
 
 	matchReportDobj(obj) {
 		if((obj == nil) || (gAction == nil))

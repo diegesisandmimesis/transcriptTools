@@ -24,6 +24,15 @@ modify CommandReport
 	}
 ;
 
+modify CommandTranscript
+	removeReport(report) {
+		if(reports_.indexOf(report) == nil)
+			return(nil);
+		reports_.removeElement(report);
+		return(true);
+	}
+;
+
 modify Action
 	// Property for naming the action-specific summarizer property
 	summarizeDobjProp = nil

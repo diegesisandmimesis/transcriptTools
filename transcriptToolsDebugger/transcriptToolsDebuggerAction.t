@@ -15,7 +15,7 @@ DefineSystemAction(TranscriptToolsDebuggerStatus)
 		local d;
 
 		d = __transcriptToolDebugger;
-		"TRANSCRIPT TOOL INTERACTIVE DEBUGGER STATUS\n ";
+		"Transcript debugger status:\n ";
 		"(use <<_cmd('tti help')>> for help)\n<.p>\n ";
 
 		"\nactive = <<toString(d.getActive())>>\n ";
@@ -77,23 +77,32 @@ DefineSystemAction(TranscriptToolsDebuggerHelp)
 	_cmd(v) { return('<b>&gt;<<toString(v).toUpper()>></b>'); }
 	_listCmd(cmd, usage) {
 			"\n\t<<_cmd(cmd)>>";
-		if(usage.ofKind(Collection)) {
-			usage.forEach(function(o) {
-				"\n\t\t<<o>>\n ";
-			});
-		} else {
-			"\n\t\t<<usage>>\n ";
-		}
+		usage = '<QUOTE>' + usage + '</QUOTE>';
+		"<<usage>> ";
 	}
 	execSystemAction() {
 		"\ntranscriptTools interactive debugger commands:\n<.p>\n ";
-		_listCmd('tti on', [ 'turns interactive debugger on',
-			'debugger will run after every command' ]);
-		_listCmd('tti off', 'turns interactive debugger off');
-		_listCmd('tti pre', 'toggles preprocess flag');
-		_listCmd('tti run', 'toggles run flag');
-		_listCmd('tti post', 'toggles postprocess flag');
-		_listCmd('tti status', 'shows current debugger status');
+		_listCmd('tti on',
+			'Turns the interactive debugger on.  When on,
+			the debugger will run after every command.'
+		);
+		_listCmd('tti off', 'Turns the interactive debugger off.');
+		_listCmd('tti pre',
+			'Toggles the <q>preprocess</q> flag.  When enabled,
+			the debugger will run before any processing of the
+			transcript.'
+		);
+		_listCmd('tti run',
+			'Toggles the <q>run</q> flag.  When enabled, the
+			debugger will run after <q>main</q> transcript
+			processing, but before post-processing.'
+		);
+		_listCmd('tti post',
+			'Toggles the <q>postprocess</q> flag.  When enabled,
+			the debugger will run after all processing of the
+			transcript, before output.'
+		);
+		_listCmd('tti status', 'Shows current the debugger status.');
 	}
 ;
 VerbRule(TranscriptToolsDebuggerHelp)

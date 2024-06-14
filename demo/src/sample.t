@@ -30,11 +30,9 @@ function inlineCommand(cmd) {
 
 flowerReportManager: ReportManager reportManagerFor = Flower;
 +ReportSummary @ExamineAction
-/*
 	summarize(data) {
-		return('It\'s <<data.listNames()>>. ');
+		return('It\'s <<data.listDobjs()>>. ');
 	}
-*/
 ;
 
 class Flower: Thing 'flower*flowers' 'flower'
@@ -79,11 +77,9 @@ class ShortFlower: Thing '(short) flower*flowers' 'flower'
 	}
 
 	dobjFor(Examine) {
-/*
 		summarize(data) {
-			return('It\'s <<data.listNames()>>. ');
+			return('It\'s <<data.listDobjs()>>. ');
 		}
-*/
 	}
 ;
 
@@ -110,10 +106,8 @@ class AlarmItem: Thing
 		}
 
 		summarize(data) {
-/*
-			return('As you pick up the <<data.listNames()>>, an
+			return('As you pick up the <<data.listDobjs()>>, an
 				alarm sounds in the distance. ');
-*/
 		}
 	}
 ;

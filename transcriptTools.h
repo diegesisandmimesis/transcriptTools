@@ -11,6 +11,17 @@
 #error "syslog should be in /home/user/tads/syslog ."
 #endif // SYSLOG_H
 
+#ifdef __DEBUG
+#include "bufferedOutputFilter.h"
+#ifndef BUFFERED_OUTPUT_FILTER_H
+#error "This module requires the bufferedOutputFilter module."
+#error "https://github.com/diegesisandmimesis/bufferedOutputFilter"
+#error "It should be in the same parent directory as this module.  So if"
+#error "transcriptTools is in /home/user/tads/transcriptTools, then"
+#error "bufferedOutputFilter should be in /home/user/tads/bufferedOutputFilter ."
+#endif // BUFFERED_OUTPUT_FILTER_H
+#endif // __DEBUG
+
 #define gIsReport(r) (((r != nil) && r.ofKind(CommandReport)) ? true : nil)
 #define gReportObject(r) (gIsReport(r) ? r.dobj_ : nil)
 #define gReportObjectOfKind(r, cls) \

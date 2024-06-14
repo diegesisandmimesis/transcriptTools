@@ -22,3 +22,15 @@ modify transcriptTools
 		TranscriptReportManager
 	]
 ;
+
+modify TranscriptReportManager
+	defaultReportManagers = static [
+		ActionReportManager
+	]
+;
+
+modify ActionReportManager
+	defaultReportSummaries = static [
+		TakeSummary
+	]
+;

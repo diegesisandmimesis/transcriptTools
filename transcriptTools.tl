@@ -8,6 +8,8 @@ source: transcriptTools/transcriptMarker.t
 source: transcriptTools/transcriptReportManager.t
 source: transcriptTools/equivalentLister.t
 source: reportManager/reportManagerMods.t
+source: reportManager/distinguisherMods.t
+source: reportManager/reportName.t
 source: reportManager/reportManager.t
 source: reportManager/reportSummary.t
 source: reportManager/actionSummary.t

@@ -57,4 +57,16 @@ modify CommandTranscript
 	}
 ;
 
+modify transcriptToolsPreinit
+	execute() {
+		inherited();
+		mainOutputStream.addOutputFilter(quoteOutputFilter);
+			//typographicalOutputFilter);
+	}
+;
+
+modify quoteOutputFilter
+	lineBufferWidth = 50
+;
+
 #endif // __DEBUG

@@ -18,7 +18,7 @@ transcriptToolsPreinit: PreinitObject
 		forEachInstance(ReportManager, function(o) {
 			o.initializeReportManager();
 		});
-		forEachInstance(TranscriptTool, function(o) {
+		forEachInstance(_TranscriptToolBase, function(o) {
 			o.initializeTranscriptTool();
 		});
 		transcriptTools.initializeTranscriptTools();

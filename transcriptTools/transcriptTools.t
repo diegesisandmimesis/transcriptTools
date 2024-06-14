@@ -13,6 +13,7 @@
 // Generic class for stuff in the module.
 class TranscriptToolsObject: Syslog syslogID = 'transcriptTools';
 
+// Object class that can be toggled on and off.
 class TranscriptToolsToggle: TranscriptToolsObject
 	active = true
 
@@ -20,8 +21,7 @@ class TranscriptToolsToggle: TranscriptToolsObject
 	setActive(v) { active = (v ? true : nil); }
 ;
 
-// Class for high-level "manager"-type objects that can be toggled on
-// and off.
+// Extend the toggle class (above) to include processing lifecycle methods.
 class TranscriptToolsWidget: TranscriptToolsToggle
 	// Wrappers for the base methods, only calls them when we're active
 	_preprocess(t, v) { if(getActive()) preprocess(t, v); }
@@ -39,9 +39,11 @@ class TranscriptToolsWidget: TranscriptToolsToggle
 ;
 
 
-// Abstract class for widgets that operate on (group, sort, or whatever)
+// Abstract class for tools that operate on (group, sort, or whatever)
 // the entire transcript.
-class TranscriptTool: TranscriptToolsWidget
+// You shouldn't directly create instances of this class, but instead
+// use one of the subclasses immediately below it.
+class _TranscriptToolBase: TranscriptToolsWidget
 	// Numeric priority for the tool.
 	// Lower-numbered tools go before higher-numbered tools.  Basic
 	// ordering is something like:
@@ -60,9 +62,17 @@ class TranscriptTool: TranscriptToolsWidget
 	}
 ;
 
-// A couple of "base subclasses" for transcript parsing widgets.  Pure sugar.
-class TranscriptPreprocessor: TranscriptTool;
-class TranscriptPostprocessor: TranscriptTool;
+// A couple of subclasses for transcript parsing widgets.  These are
+// the classes that should be instantiated.
+
+// "Normal" tool.  Runs more or less in the middle of transcript processing.
+class TranscriptTool: _TranscriptToolBase;
+
+// Tool that runs before any other transcript processing.
+class TranscriptPreprocessor: _TranscriptToolBase;
+
+// Tool that runs after all other transcript processing.
+class TranscriptPostprocessor: _TranscriptToolBase;
 
 // Base class for transcript-rewriting logic.
 // In theory this is an abstract class so we can create pre-transcript
@@ -73,9 +83,7 @@ transcriptTools: TranscriptToolsWidget
 	// to ourselves at preinit
 	defaultTools = nil
 
-	_timestamp = nil
-
-	// List of TranscriptTool instances we're using
+	// List of tools we're using
 	_transcriptTools = perInstance(new Vector())
 
 	// Called at preinit
@@ -118,7 +126,7 @@ transcriptTools: TranscriptToolsWidget
 
 	// Add the given widget to our list
 	addTranscriptTool(obj, skipSort?) {
-		if((obj == nil) || !obj.ofKind(TranscriptTool))
+		if((obj == nil) || !obj.ofKind(_TranscriptToolBase))
 			return(nil);
 
 		_transcriptTools.append(obj);
@@ -140,10 +148,24 @@ transcriptTools: TranscriptToolsWidget
 	}
 
 	// Main turn lifecycle methods
-	preprocessEntry(t, v) { forEachTool({ x: x._preprocess(t, v) }); }
-	runEntry(t, v) { forEachTool({ x: x._run(t, v) }); }
-	postprocessEntry(t, v) { forEachTool({ x: x._postprocess(t, v) }); }
+	preprocessEntry(t, v) {
+		forEachTool({ x: x._preprocess(t, v) }, TranscriptPreprocessor);
+	}
+	runEntry(t, v) { forEachTool({ x: x._run(t, v) }, TranscriptTool); }
+	postprocessEntry(t, v) {
+		forEachTool({ x: x._postprocess(t, v) },
+			TranscriptPostprocessor);
+	}
 	clear() { forEachTool({ x: x.clear() }); }
 
-	forEachTool(fn) { _transcriptTools.forEach({ x: (fn)(x) }); }
+	forEachTool(fn, cls) {
+		if(cls) {
+			_transcriptTools.forEach(function(o) {
+				if(!o.ofKind(cls)) return;
+				(fn)(o);
+			});
+			return;
+		}
+		_transcriptTools.forEach({ x: (fn)(x) });
+	}
 ;

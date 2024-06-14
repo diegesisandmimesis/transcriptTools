@@ -32,8 +32,10 @@ modify CommandReport
 		return(true);
 	}
 
-	_andList(lst) { return(equivalentLister.makeSimpleList(lst)); }
-	_orList(lst) { return(equivalentLister.makeSimpleList(lst)); }
+	_andList(lst)
+		{ return(lst ? equivalentLister.makeSimpleList(lst) : nil); }
+	_orList(lst)
+		{ return(lst ? equivalentLister.makeSimpleList(lst) : nil); }
 
 	listDobjsWithAnd() { return(_andList(dobjList_)); }
 	listDobjsWithOr() { return(_orList(dobjList_)); }
