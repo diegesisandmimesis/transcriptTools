@@ -6,6 +6,7 @@ source: transcriptTools/transcriptToolsTransform.t
 source: transcriptTools/transcriptToolsPreinit.t
 source: transcriptTools/transcriptMarker.t
 source: transcriptTools/transcriptReportManager.t
+source: transcriptTools/transcriptCleanup.t
 source: transcriptTools/equivalentLister.t
 source: reportManager/reportManagerMods.t
 source: reportManager/distinguisherMods.t

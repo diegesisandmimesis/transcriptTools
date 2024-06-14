@@ -19,7 +19,8 @@ transcriptToolsModuleID: ModuleID {
 modify transcriptTools
 	defaultTools = static [
 		MarkFailures,
-		TranscriptReportManager
+		TranscriptReportManager,
+		CleanupAnnouncements
 	]
 ;
 
@@ -31,6 +32,14 @@ modify TranscriptReportManager
 
 modify ActionReportManager
 	defaultReportSummaries = static [
-		TakeSummary
+		TakeSummary,
+		TakeFromSummary,
+		DropSummary,
+		PutOnSummary,
+		PutInSummary,
+		PutUnderSummary,
+		PutBehindSummary,
+
+		ImplicitTakeSummary
 	]
 ;
