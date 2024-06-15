@@ -217,7 +217,7 @@ class ReportSummary: TranscriptToolsWidget
 	_sortByDistinguisher(t, report, vec) {
 		local dist, o;
 
-		dist = getReportDistinguisher(report);
+		dist = getReportDistinguisher(report, true);
 		o = vec.valWhich({ x: x._distinguisher == dist });
 		if(o == nil) {
 			vec.append(new _DistinguisherData(dist));
@@ -227,7 +227,7 @@ class ReportSummary: TranscriptToolsWidget
 	}
 
 	// Get the distinguisher announcement for this report.
-	getReportDistinguisher(report) {
+	getReportDistinguisher(report, forceSingle?) {
 		local obj, n;
 
 		if(gameMain.useDistinguishersInAnnouncements == nil)
@@ -236,7 +236,7 @@ class ReportSummary: TranscriptToolsWidget
 		if((obj = report.dobj_) == nil)
 			return(nil);
 
-		if(report.dobjList_)
+		if(report.dobjList_ && !forceSingle)
 			n = report.dobjList_.length;
 		else
 			n = 1;

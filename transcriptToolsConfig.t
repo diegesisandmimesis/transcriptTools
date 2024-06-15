@@ -42,6 +42,8 @@ modify ActionReportManager
 		PutUnderSummary,
 		PutBehindSummary,
 
-		ImplicitTakeSummary
+		ImplicitTakeSummary,
+
+		TakeFailureSummary
 	]
 ;

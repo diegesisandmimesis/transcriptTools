@@ -9,37 +9,26 @@
 #include "transcriptTools.h"
 
 class ActionSummary: ReportSummary
-	matchMessageProp = nil
+	defaultMessageProp = nil
 
-/*
-	// Merge and summarize the reports.
-	// First arg is the transcript, second is a _MergeData instance (which
-	// contains reports for a specific report class).
-	_mergeReports(t, data) {
-		local i, r, txt;
+	matchReport(report) {
+		if(inherited(report) != true)
+			return(nil);
 
-		r = data.vec[1];
-
-		for(i = 1; i <= data.vec.length; i++) {
-			// Add all the dobjs and iobjs from the individual
-			// reports onto the first report.
-			r.addDobj(data.vec[i].dobj_);
-			r.addIobj(data.vec[i].iobj_);
-
-			// Remove all the reports except the first one.
-			if(i != 1)
-				t.removeReport(data.vec[i]);
-		}
-
-		// Call the summarizer method for this kind of report,
-		// as defined in the _reportClass table.  If the summarizer
-		// method returns nil, bail.
-		if((txt = (_reportClasses[data._reportClass])(r)) == nil)
-			return;
-
-		r.messageText_ = txt;
+		return(_checkMessageProp(report));
 	}
-*/
+
+	_checkMessageProp(report) {
+		if(defaultMessageProp == nil)
+			return(true);
+
+		if(!report.ofKind(DefaultCommandReport)
+			&& !report.ofKind(FullCommandReport))
+			return(true);
+
+		return(report.messageProp_ == defaultMessageProp);
+	}
+
 	_mergeReports(t, data) {
 		_mergeReportList(t, data.vec, data._reportClass);
 	}
