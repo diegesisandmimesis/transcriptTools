@@ -37,6 +37,8 @@ modify Action
 	// Property for naming the action-specific summarizer property
 	summarizeDobjProp = nil
 
+	noSummary = nil
+
 	ofAnyKind(val) {
 		local i;
 

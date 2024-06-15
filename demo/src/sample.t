@@ -101,6 +101,7 @@ class AlarmItem: Thing
 	dobjFor(Take) {
 		action() {
 			inherited();
+			gAction.noSummary = true;
 			mainReport('As you pick up {a dobj/him}, an alarm sounds
 				in the distance. ');
 		}

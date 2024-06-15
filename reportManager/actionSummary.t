@@ -9,24 +9,27 @@
 #include "transcriptTools.h"
 
 class ActionSummary: ReportSummary
-	defaultMessageProp = nil
-
 	matchReport(report) {
 		if(inherited(report) != true)
+			return(nil);
+
+		if(report.action_ && (report.action_.noSummary == true))
 			return(nil);
 
 		return(_checkMessageProp(report));
 	}
 
 	_checkMessageProp(report) {
-		if(defaultMessageProp == nil)
+		if((report.action_ == nil)
+			|| (report.action_.defaultMessageProp == nil))
 			return(true);
 
 		if(!report.ofKind(DefaultCommandReport)
 			&& !report.ofKind(FullCommandReport))
 			return(true);
 
-		return(report.messageProp_ == defaultMessageProp);
+		return(report.messageProp_
+			== report.action_.defaultMessageProp);
 	}
 
 	_mergeReports(t, data) {
