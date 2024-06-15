@@ -1,6 +1,7 @@
 name: transcriptTools Library
 source: transcriptTools/transcriptTools.t
 source: transcriptTools/transcriptToolsMods.t
+source: transcriptTools/transcriptToolsPatch.t
 source: transcriptTools/transcriptToolsConjugation.t
 source: transcriptTools/transcriptToolsTransform.t
 source: transcriptTools/transcriptToolsPreinit.t
@@ -9,6 +10,7 @@ source: transcriptTools/transcriptReportManager.t
 source: transcriptTools/transcriptGrouper.t
 source: transcriptTools/transcriptCleanup.t
 source: transcriptTools/equivalentLister.t
+source: transcriptTools/transcriptToolsGenerate.t
 source: reportManager/reportManagerMods.t
 source: reportManager/distinguisherMods.t
 source: reportManager/reportName.t

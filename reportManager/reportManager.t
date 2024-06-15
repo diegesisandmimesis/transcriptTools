@@ -121,15 +121,4 @@ class SelfReportManager: ReportManager
 	// SelfSummary is a bespoke summarizer designed for use with
 	// this report manager.
 	defaultReportSummaries = static [ SelfSummary ]
-
-	matchReportDobj(obj) {
-		if((obj == nil) || (gAction == nil))
-			return(nil);
-		if(gAction.propType(&summarizeDobjProp) == TypeNil)
-			return(nil);
-		if(obj.propType(gAction.summarizeDobjProp) == TypeNil)
-			return(nil);
-
-		return(true);
-	}
 ;

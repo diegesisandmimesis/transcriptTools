@@ -27,7 +27,8 @@ modify transcriptTools
 
 modify TranscriptReportManager
 	defaultReportManagers = static [
-		ActionReportManager
+		ActionReportManager,
+		SelfReportManager
 	]
 ;
 
