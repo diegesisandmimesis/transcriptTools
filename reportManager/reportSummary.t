@@ -17,6 +17,13 @@ class _MergeData: object
 	construct(v) { _reportClass = v; }
 ;
 
+class _DistinguisherData: object
+	_distinguisher = nil
+	vec = perInstance(new Vector())
+
+	construct(v) { _distinguisher = v; }
+;
+
 class ReportSummary: TranscriptToolsWidget
 	action = nil			// the kind of action we match
 	isFailure = nil			// did the action fail?
@@ -57,12 +64,34 @@ class ReportSummary: TranscriptToolsWidget
 		return(act.ofKind(action));
 	}
 
+	// See if the given object matches our object criteria, if any.
+	matchObject(obj) {
+		// If we don't have a report manager, what are we even
+		// doing here?  Fail.
+		if(reportManager == nil)
+			return(nil);
+
+		// If we're not the summary for a particular type of
+		// object, we match any object
+		if(reportManager.reportManagerFor == nil)
+			return(true);
+
+		// If we're here, we only care about a particular
+		// object class.  If the arg is nil, it can't match
+		// the object class, so we fail.
+		if(obj == nil)
+			return(nil);
+
+		return(reportManager.isReportManagerFor(obj));
+	}
+
 	// Returns boolean true if we summarize this kind of report.
 	matchReport(report) {
 		if(report == nil)
 			return(nil);
 
-		return(matchAction(report.action_)
+		return(matchObject(report.dobj_)
+			&& matchAction(report.action_)
 			&& (isFailure == report.isFailure)
 			&& (isImplicit == report.isActionImplicit));
 	}
@@ -149,32 +178,52 @@ class ReportSummary: TranscriptToolsWidget
 		return(v);
 	}
 
-	// Merge and summarize the reports.
-	// First arg is the transcript, second is a _MergeData instance (which
-	// contains reports for a specific report class).
-	_mergeReports(t, data) {
+	_mergeReportList(t, lst, cls) {
 		local i, r, txt;
 
-		r = data.vec[1];
+		r = lst[1];
 
-		for(i = 1; i <= data.vec.length; i++) {
+		for(i = 1; i <= lst.length; i++) {
 			// Add all the dobjs and iobjs from the individual
 			// reports onto the first report.
-			r.addDobj(data.vec[i].dobj_);
-			r.addIobj(data.vec[i].iobj_);
+			r.addDobj(lst[i].dobj_);
+			r.addIobj(lst[i].iobj_);
 
 			// Remove all the reports except the first one.
 			if(i != 1)
-				t.removeReport(data.vec[i]);
+				t.removeReport(lst[i]);
 		}
 
 		// Call the summarizer method for this kind of report,
 		// as defined in the _reportClass table.  If the summarizer
 		// method returns nil, bail.
-		if((txt = (_reportClasses[data._reportClass])(r)) == nil)
+		if((txt = (_reportClasses[cls])(r)) == nil)
 			return;
 
 		r.messageText_ = txt;
+	}
+
+	// Merge and summarize the reports.
+	// First arg is the transcript, second is a _MergeData instance (which
+	// contains reports for a specific report class).
+	_mergeReports(t, data) {
+		local v;
+
+		v = new Vector();
+		data.vec.forEach({ x: _sortByDistinguisher(t, x, v) });
+		v.forEach({ x: _mergeReportList(t, x.vec, data._reportClass) });
+	}
+
+	_sortByDistinguisher(t, report, vec) {
+		local dist, o;
+
+		dist = getReportDistinguisher(report);
+		o = vec.valWhich({ x: x._distinguisher == dist });
+		if(o == nil) {
+			vec.append(new _DistinguisherData(dist));
+			o = vec[vec.length];
+		}
+		o.vec.append(report);
 	}
 
 	// Get the distinguisher announcement for this report.
@@ -184,8 +233,13 @@ class ReportSummary: TranscriptToolsWidget
 		if(gameMain.useDistinguishersInAnnouncements == nil)
 			return(nil);
 
-		obj = report.dobj_;
-		n = report.dobjList_.length;
+		if((obj = report.dobj_) == nil)
+			return(nil);
+
+		if(report.dobjList_)
+			n = report.dobjList_.length;
+		else
+			n = 1;
 
 		return(obj.getBestDistinguisher(report.action_
 			.getResolvedObjList(DirectObject))

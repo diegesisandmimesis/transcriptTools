@@ -68,9 +68,19 @@ class TranscriptReportManager: TranscriptTool
 		});
 	}
 
-	//preprocess(t, v) { forEachReportManager({ x: x._preprocess(t, v) }); }
-	run(t, v) { forEachReportManager({ x: x._run(t, v) }); }
-	//postprocess(t, v) { forEachReportManager({ x: x._postprocess(t, v) }); }
+	run(t, v) {
+		local l;
+
+		l = new Vector();
+		t.forEachReport(function(o) {
+			if(o.dobj_ && o.dobj_.reportManager) {
+				l.append(o.dobj_.reportManager);
+			}
+		});
+		l.forEach({ x: x._run(t, v) });
+
+		forEachReportManager({ x: x._run(t, v) });
+	}
 
 	forEachReportManager(fn) {
 		if(_reportManagers == nil)

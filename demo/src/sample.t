@@ -198,7 +198,7 @@ roomTwo: Room 'Room Two'
 +RedFlower;
 +Pebble;
 +GreenFlower;
-+Box;
++Vase;
 ++RedFlower;
 ++Pebble;
 ++BlueFlower;

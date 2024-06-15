@@ -23,10 +23,8 @@ class ReportManager: TranscriptToolsWidget
 	}
 
 	initializeReportManagerFor() {
-		if(reportManagerFor == nil) {
-			reportManagerFor = [];
+		if(reportManagerFor == nil)
 			return;
-		}
 
 		if(!reportManagerFor.ofKind(Collection))
 			reportManagerFor = [ reportManagerFor ];
@@ -107,9 +105,7 @@ class ReportManager: TranscriptToolsWidget
 		return(true);
 	}
 
-	//preprocess(t, v) { forEachSummary({ x: x._preprocess(t, v) }); }
 	run(t, v) { forEachSummary({ x: x._run(t, v) }); }
-	//postprocess(t, v) { forEachSummary({ x: x._postprocess(t, v) }); }
 
 	forEachSummary(fn) {  _reportManagerSummaries.forEach({ x: fn(x) }); }
 ;
