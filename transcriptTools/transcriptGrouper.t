@@ -123,12 +123,12 @@ class ImplicitGrouper: TranscriptGrouper
 
 	}
 
-	_handleGroup(r0, r1) {
-		
-	}
-
 	_canGroupWith(r0, r1) {
 		if((r0 == nil) || !r0.ofKind(ImplicitActionAnnouncement))
+			return(nil);
+
+		if((r0.action_ && r0.action_.noSummary)
+			|| (r1.action_ && r1.action_.noSummary))
 			return(nil);
 
 		if(r1.ofKind(ImplicitActionAnnouncement))

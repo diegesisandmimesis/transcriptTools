@@ -149,15 +149,15 @@ transcriptTools: TranscriptToolsWidget
 
 	// Main turn lifecycle methods
 	preprocessEntry(t, v) {
-		if(!getActive()) return;
+		if(!getActive() || t.noSummary) return;
 		forEachTool({ x: x._preprocess(t, v) }, TranscriptPreprocessor);
 	}
 	runEntry(t, v) {
-		if(!getActive()) return;
+		if(!getActive() || t.noSummary) return;
 		forEachTool({ x: x._run(t, v) }, TranscriptTool);
 	}
 	postprocessEntry(t, v) {
-		if(!getActive()) return;
+		if(!getActive() || t.noSummary) return;
 		forEachTool({ x: x._postprocess(t, v) },
 			TranscriptPostprocessor);
 	}

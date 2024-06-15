@@ -25,6 +25,8 @@ modify CommandReport
 ;
 
 modify CommandTranscript
+	noSummary = nil
+
 	removeReport(report) {
 		if(reports_.indexOf(report) == nil)
 			return(nil);
