@@ -31,7 +31,6 @@ modify SouthwestAction summarizeDobjProp = &summarizeDobjSouthwest;
 modify LieOnAction summarizeDobjProp = &summarizeDobjLieOn;
 modify DetachFromAction summarizeDobjProp = &summarizeDobjDetachFrom;
 modify LookBehindAction summarizeDobjProp = &summarizeDobjLookBehind;
-modify ParseDebugAction summarizeDobjProp = &summarizeDobjParseDebug;
 modify CleanAction summarizeDobjProp = &summarizeDobjClean;
 modify BreakAction summarizeDobjProp = &summarizeDobjBreak;
 modify DebugAction summarizeDobjProp = &summarizeDobjDebug;
@@ -172,3 +171,7 @@ modify ScrewWithAction summarizeDobjProp = &summarizeDobjScrewWith;
 modify EventAction summarizeDobjProp = &summarizeDobjEvent;
 modify CommandActorAction summarizeDobjProp = &summarizeDobjCommandActor;
 modify StrikeAction summarizeDobjProp = &summarizeDobjStrike;
+
+#ifdef __DEBUG
+modify ParseDebugAction summarizeDobjProp = &summarizeDobjParseDebug;
+#endif // __DEBUG

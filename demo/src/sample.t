@@ -102,6 +102,7 @@ class AlarmItem: Thing
 		action() {
 			inherited();
 			gTranscript.noSummary = true;
+			//noSummary;
 			mainReport('As you pick up {a dobj/him}, an alarm sounds
 				in the distance. ');
 		}
@@ -147,12 +148,15 @@ class Vase: Container '(delicate) vase' 'vase'
 	}
 */
 ;
-class Sign: Fixture 'sign' 'sign' "[This space intentionally left blank] ";
+class Sign: Fixture 'sign' 'sign'
+	"[This space intentionally left blank] "
+	specialDesc = "There's a sign on the wall. "
+;
 
 Sign template "desc";
 
-centralRoom: Room 'Central Room'
-	"This is the central room.  Exits to rooms one through four are
+roomZero: Room 'Room Zero'
+	"This is the central room zero.  Exits to rooms one through four are
 	in the cardinal directions, clockwise from the north. "
 	north = roomOne
 	east = roomTwo
@@ -160,24 +164,27 @@ centralRoom: Room 'Central Room'
 	west = roomFour
 ;
 +me: Person;
++Sign "Each room in this demo is set up to test some part of the transcriptTool
+	module.  There's a sign in each room describing one or more actions
+	and their expected output.
+	<.p>Basic usage of this demo is to move to the various rooms, doing
+	the actions described on the sign, and then using
+	<<inlineCommand('undo')>> to reset the game state. ";
+	
 
 roomOne: Room 'Room One'
-	"This is room one.  The central room is to the south and
-	room 1B is to the north.
-	<.p>
-	There's a sign on the wall. "
-	north = room1B
-	south = centralRoom
+	"This is room one.  Room zero is to the south and
+	room 1B is to the north. "
+	north = roomOneB
+	south = roomZero
 ;
 +Sign "If you <<inlineCommand('take all')>> you should get
 	a single report for both objects, instead of a report for each. ";
 +Pebble;
 +Rock;
 
-room1B: Room 'Room 1B'
-	"This is room 1B.  Room one is to the south.
-	<.p>
-	There's a sign on the wall. "
+roomOneB: Room 'Room 1B'
+	"This is room 1B.  Room one is to the south. "
 	south = roomOne
 ;
 +Sign "If you <<inlineCommand('take all')>> you should get a single
@@ -188,10 +195,8 @@ room1B: Room 'Room 1B'
 +Rock takeable = nil;
 
 roomTwo: Room 'Room Two'
-	"This is room two.  The central room is to the west.
-	<.p>
-	There's a sign on the wall. "
-	west = centralRoom
+	"This is room two.  Room zero is to the west. "
+	west = roomZero
 ;
 +Sign "If you <<inlineCommand('examine all')>> the flowers should all be
 	grouped by their locations instead of their colors. ";
@@ -207,52 +212,64 @@ roomTwo: Room 'Room Two'
 +GreenFlower;
 
 roomThree: Room 'Room Three'
-	"This is room three.  The central room is to the north.
-	<.p>
-	There's a sign on the wall. "
-	north = centralRoom
-	south = room3B
+	"This is room three.  Room zero is to the north and room 3B is
+	to the south. "
+	north = roomZero
+	south = roomThreeB
 ;
-+Sign;
++Sign "If you <<inlineCommand('put pebbles in box')>> you should get one
+	implicit action report (describing opening the box and taking the
+	pebbles) and a one action report (putting the pebbles in the box). ";
 +Pebble;
 +Pebble;
 +Box;
 
-room3B: Room 'Room 3B'
-	"This is room 3B.  Room three is to the north, 3C is to the south.
-	<.p>
-	There's a sign on the wall. "
+roomThreeB: Room 'Room 3B'
+	"This is room 3B.  Room three is to the north, 3C is to the south,
+		and 3B2 is to the east. "
 	north = roomThree
-	south = room3C
+	east = roomThreeB2
+	south = roomThreeC
 ;
-+Sign;
-//+Pebble;
-//+Pebble;
++Sign "If you try <<inlineCommand('put all in box')>> there should be
+	<b>no</b> summarizing of the action.  For both stone there should
+	be an implicit action announcement (for taking the stone), an
+	action report for the implicit <<inlineCommand('take')>> command,
+	and then an action report for putting the stone in the box (just
+	<q>Done.</q>).  There will also be a single implicit action
+	announcement for opening the box, before the first <q>Done.</q> ";
 +Stone;
 +Stone;
 +Box;
 
-room3C: Room 'Room 3C'
-	"This is room 3C.  Room 3B is to the north, 3D is to the south.
-	<.p>
-	There's a sign on the wall. "
-	north = room3B
-	south = room3D
+roomThreeB2: Room 'Room 3B2'
+	"This is room 3B.  Room 3B is to the west. "
+	west = roomThreeB
 ;
-+Sign;
++Sign "This is currently just a duplicate of room 3B, ignore it. ";
++Stone;
++Stone;
++Box;
+
+roomThreeC: Room 'Room 3C'
+	"This is room 3C.  Room 3B is to the north, 3D is to the south. "
+	north = roomThreeB
+	south = roomThreeD
+;
++Sign "Like in room 3B, if you try <<inlineCommand('put all in box')>>
+	you should get a bunch of unsummarized action reports&mdash;the
+	summary logic should be disabled for the command. ";
 +Pebble;
 +Pebble;
 +Stone;
 +Stone;
 +Box;
 
-room3D: Room 'Room 3D'
-	"This is room 3D.  Room 3C is to the north.
-	<.p>
-	There's a sign on the wall. "
-	north = room3C
+roomThreeD: Room 'Room 3D'
+	"This is room 3D.  Room 3C is to the north. "
+	north = roomThreeC
 ;
-+Sign;
++Sign "More or less identical test to room 3C, with different objects. ";
 +Pebble;
 +Stone;
 +Anchor;
@@ -260,12 +277,10 @@ room3D: Room 'Room 3D'
 
 
 roomFour: Room 'Room Four'
-	"This is room four.  The central room is to the east.
-	<.p>
-	There's a sign on the wall. "
-	east = centralRoom
+	"This is room four.  Room zero is to the east. "
+	east = roomZero
 ;
-+Sign "The parent class of the flowers in this room use a self-summarizer.  If
++Sign "The parent class of the flowers in this room uses a self-summarizer.  If
 you do a <<inlineCommand('examine flowers')>> you'll get a single summary
 report.  The only interesting thing (as opposed to the similar stuff that
 happens in room two) is the underlying mechanism used to do the summary. ";

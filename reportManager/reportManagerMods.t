@@ -35,7 +35,7 @@ modify CommandReport
 	_andList(lst)
 		{ return(lst ? equivalentLister.makeSimpleList(lst) : nil); }
 	_orList(lst)
-		{ return(lst ? equivalentLister.makeSimpleList(lst) : nil); }
+		{ return(lst ? equivalentOrLister.makeSimpleList(lst) : nil); }
 
 	listDobjsWithAnd() { return(_andList(dobjList_)); }
 	listDobjsWithOr() { return(_orList(dobjList_)); }

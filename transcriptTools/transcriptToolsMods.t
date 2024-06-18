@@ -62,3 +62,5 @@ modify Thing
 				//	we've been chosed as the representative
 				//	dobj for a report summary
 ;
+
+//noSummary() { if(gTranscript) gTranscript.noSummary = true; }

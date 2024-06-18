@@ -9,6 +9,55 @@
 
 #ifdef __DEBUG
 
+DefineSystemAction(TranscriptToolsStatus)
+	execSystemAction() {
+		local t;
+
+		t = transcriptTools;
+		"Transcript processing is <<(t.getActive ? 'enabled'
+			: 'disabled')>>. ";
+	}
+;
+VerbRule(TranscriptToolsStatus)
+	'tt' ( '?' | 'status' ) : TranscriptToolsStatusAction
+;
+
+DefineSystemAction(TranscriptToolsOn)
+	execSystemAction() {
+		local t;
+
+		t = transcriptTools;
+		if(t.getActive()) {
+			reportFailure('Transcript processing is already
+				enabled. ');
+			exit;
+		}
+
+		t.setActive(true);
+		"Transcript processing is now enabled. ";
+	}
+;
+VerbRule(TranscriptToolsOn)
+	'tt' ( 'on' ) : TranscriptToolsOnAction
+;
+
+DefineSystemAction(TranscriptToolsOff)
+	execSystemAction() {
+		local t;
+
+		t = transcriptTools;
+		if(!t.getActive()) {
+			reportFailure('Transcript processing is already
+				disabled. ');
+			exit;
+		}
+
+		t.setActive(nil);
+		"Transcript processing is now disabled. ";
+	}
+;
+VerbRule(TranscriptToolsOFF) 'tt' ( 'off' ) : TranscriptToolsOffAction;
+
 DefineSystemAction(TranscriptToolsDebuggerStatus)
 	_cmd(v) { return('<b>&gt;<<toString(v).toUpper()>></b>'); }
 	execSystemAction() {
