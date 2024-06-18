@@ -155,7 +155,11 @@ __transcriptToolDebugger: PreinitObject
 	getActionFlag() { return(_actionFlag == true); }
 	setActionFlag(v) { _actionFlag = (v ? true : nil); }
 
-	runThisTurn(v) { return(v && getActive); }
+	runThisTurn(v) {
+		if(gAction.ofKind(SystemAction))
+			return(nil);
+		return(v && getActive);
+	}
 
 	preprocess(t, v) {
 		if(!runThisTurn(_activePreprocess))
@@ -177,11 +181,15 @@ __transcriptToolDebugger: PreinitObject
 		debugger(t, v, 'postprocessing');
 	}
 
+/*
 	afterActionMain() {
 		if(!getActive())
 			return;
+		if(gAction.ofKind(TranscriptToolsDebuggerOffAction))
+			return;
 		debugger(gTranscript, gTranscript.reports_);
 	}
+*/
 
 	// Handle the debugger lock
 	_setDebuggerLock(v) {

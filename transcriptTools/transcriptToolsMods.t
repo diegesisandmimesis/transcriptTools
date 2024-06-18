@@ -63,4 +63,4 @@ modify Thing
 				//	dobj for a report summary
 ;
 
-//noSummary() { if(gTranscript) gTranscript.noSummary = true; }
+gNoSummary() { if(gTranscript) gTranscript.noSummary = true; }

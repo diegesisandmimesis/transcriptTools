@@ -12,6 +12,7 @@
 
 class TakeSummary: ActionSummary
 	action = TakeAction
+	defaultMessageProp = &okayTakeMsg
 ;
 
 class TakeFromSummary: ActionSummary

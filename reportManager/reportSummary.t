@@ -38,8 +38,12 @@ class ReportSummary: TranscriptToolsWidget
 		ImplicitActionAnnouncement -> &_summarizeImplicit,
 		MultiObjectAnnouncement -> &_summarizeAnnouncement,
 		DefaultCommandReport -> &_summarize,
+		BeforeCommandReport -> &_summarize,
 		MainCommandReport -> &_summarize,
-		FullCommandReport -> &_summarize
+		AfterCommandReport -> &_summarize,
+		//FullCommandReport -> &_summarize,
+		FailCommandReport -> &_summarizeFailure,
+		ExtraCommandReport -> &_summarize
 	]
 
 	// Preinit method.  Add ourselves to our report manager.
@@ -273,6 +277,10 @@ class ReportSummary: TranscriptToolsWidget
 		r._summaryText = txt;
 
 		return('<./p0>\n<.assume>first ' + txt + '<./assume>\n');
+	}
+
+	_summarizeFailure(r) {
+		return(nil);
 	}
 ;
 

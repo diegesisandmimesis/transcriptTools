@@ -22,31 +22,15 @@ class ActionSummary: ReportSummary
 	}
 
 	_checkMessageProp(report) {
-		if((report.action_ == nil)
-			|| (defaultMessageProp == nil))
+		if((report.action_ == nil) || (defaultMessageProp == nil))
 			return(true);
 
 		if(!report.ofKind(DefaultCommandReport)
 			&& !report.ofKind(FullCommandReport))
 			return(true);
 
-		return(report.messageProp_
-			== report.action_.defaultMessageProp);
+		return(report.messageProp_ == defaultMessageProp);
 	}
-/*
-	_checkMessageProp(report) {
-		if((report.action_ == nil)
-			|| (report.action_.defaultMessageProp == nil))
-			return(true);
-
-		if(!report.ofKind(DefaultCommandReport)
-			&& !report.ofKind(FullCommandReport))
-			return(true);
-
-		return(report.messageProp_
-			== report.action_.defaultMessageProp);
-	}
-*/
 
 	_mergeReports(t, data) {
 		_mergeReportList(t, data.vec, data._reportClass);

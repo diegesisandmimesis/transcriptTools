@@ -88,11 +88,12 @@ class BlueShortFlower: ShortFlower color = 'blue';
 class GreenShortFlower: ShortFlower color = 'green';
 
 class TakeToggle: Thing
+	takeFailureMsg = &cannotTakeThatMsg
 	takeable = true
 	dobjFor(Take) {
 		verify() {
 			if(takeable != true)
-				illogical(&cannotTakeThatMsg);
+				illogical(takeFailureMsg);
 		}
 	}
 ;
@@ -101,12 +102,10 @@ class AlarmItem: Thing
 	dobjFor(Take) {
 		action() {
 			inherited();
-			gTranscript.noSummary = true;
-			//noSummary;
-			mainReport('As you pick up {a dobj/him}, an alarm sounds
-				in the distance. ');
+			//gNoSummary();
+			extraReport('As you pick up {a dobj/him}, an alarm
+				sounds in the distance. ');
 		}
-
 		summarize(data) {
 			return('As you pick up the <<data.listDobjs()>>, an
 				alarm sounds in the distance. ');
@@ -125,6 +124,12 @@ class Rock: TakeToggle '(ordinary) rock*rocks' 'rock'
 class Stone: AlarmItem, TakeToggle '(unremarkable) stone*stones' 'stone'
 	"An unremarkable stone. "
 	isEquivalent = true
+;
+class Brick: AlarmItem, TakeToggle '(red) brick*bricks' 'brick'
+	"A red brick. "
+	isEquivalent = true
+	takeable = nil
+	takeFailureMsg = 'The brick somehow or other evades {your/his} grasp. '
 ;
 
 class Anchor: Thing '(rusty) anchor' 'rusty anchor'
@@ -184,7 +189,9 @@ roomOne: Room 'Room One'
 +Rock;
 
 roomOneB: Room 'Room 1B'
-	"This is room 1B.  Room one is to the south. "
+	"This is room 1B.  Room one is to the south and room 1C is to
+	the north. "
+	north = roomOneC
 	south = roomOne
 ;
 +Sign "If you <<inlineCommand('take all')>> you should get a single
@@ -193,6 +200,16 @@ roomOneB: Room 'Room 1B'
 +Pebble takeable = nil;
 +Pebble takeable = nil;
 +Rock takeable = nil;
+
+roomOneC: Room 'Room 1C'
+	"This is room 1C.  Room 1B is to the south. "
+	south = roomOneB
+;
++Sign "If you <<inlineCommand('take all')>> you should get a single
+	failure report for both objects, instead of a separate failure report
+	for each one. ";
++Brick;
++Brick;
 
 roomTwo: Room 'Room Two'
 	"This is room two.  Room zero is to the west. "

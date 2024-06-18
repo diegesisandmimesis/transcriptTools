@@ -86,6 +86,12 @@ transcriptTools: TranscriptToolsWidget
 	// List of tools we're using
 	_transcriptTools = perInstance(new Vector())
 
+	getActive() {
+		if(!inherited())
+			return(nil);
+		return(true);
+	}
+
 	// Called at preinit
 	initializeTranscriptTools() {
 		addDefaultTranscriptTools();
