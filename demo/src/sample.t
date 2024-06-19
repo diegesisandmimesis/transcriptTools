@@ -31,10 +31,11 @@ function inlineCommand(cmd) {
 flowerReportManager: ReportManager reportManagerFor = Flower;
 +ReportSummary @ExamineAction
 	summarize(data) {
+aioSay('\nsummarize\n ');
 		return('It\'s <<data.listDobjs()>>. ');
 	}
 	summarizeAnnouncement(r) {
-aioSay('\nfoo\n ');
+aioSay('\nsummarizeAnnouncement\n ');
 		return(inherited(r));
 	}
 ;

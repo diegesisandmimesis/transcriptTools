@@ -1,8 +1,6 @@
 #charset "us-ascii"
 //
-// defaultReports.t
-//
-//	Class declarations of default summaries
+// selfSummaries.t
 //
 //
 #include <adv3.h>
@@ -10,43 +8,6 @@
 
 #include "transcriptTools.h"
 
-class TakeSummary: ActionSummary
-	action = TakeAction
-	defaultMessageProp = &okayTakeMsg
-	summarize(data) {
-		return(inherited(data));
-	}
-;
-
-class TakeFromSummary: ActionSummary
-	action = TakeFromAction
-;
-
-class DropSummary: ActionSummary
-	action = DropAction
-;
-
-class PutOnSummary: ActionSummary
-	action = PutOnAction
-;
-
-class PutInSummary: ActionSummary action = PutInAction;
-class PutUnderSummary: ActionSummary action = PutUnderAction;
-class PutBehindSummary: ActionSummary action = PutBehindAction;
-
-modify playerActionMessages
-	cannotTakeThatMsg = '{You/he} {can\'t} take {that dobj/him}. '
-;
-
-class TakeFailureSummary: ActionFailureSummary
-	action = TakeAction
-;
-
-class ImplicitTakeSummary: ImplicitSummary
-	action = TakeAction
-;
-
-/*
 // Special summarizer designed for use with SelfReportManager.
 // This calls dobjFor(Action) { summarize(data) {} } summarizers.
 class SelfSummary: ReportSummary
@@ -58,21 +19,6 @@ class SelfSummary: ReportSummary
 		MainCommandReport,
 		AfterCommandReport
 	]
-
-	matchObject(obj) {
-		if((obj == nil) || (gAction == nil))
-			return(nil);
-
-		if(gAction.propType(self.summaryProp) == TypeNil) {
-			return(nil);
-		}
-
-		if(obj.propType(gAction.(self.summaryProp)) == TypeNil) {
-			return(nil);
-		}
-
-		return(true);
-	}
 
 	matchReportType(report) {
 		local i;
@@ -90,16 +36,11 @@ class SelfSummary: ReportSummary
 	matchReport(report) {
 		local act, obj, t;
 
-		if(report == nil)
-			return(nil);
+		if(report == nil) return(nil);
+		if((act = report.action_) == nil) return(nil);
+		if((obj = report.dobj_) == nil) return(nil);
 
-		if((act = report.action_) == nil)
-			return(nil);
-
-		if((obj = report.dobj_) == nil)
-			return(nil);
-
-		if(!matchObject(obj) || (isFailure != report.isFailure)
+		if((isFailure != report.isFailure)
 			|| (isImplicit != report.isActionImplicit))
 			return(nil);
 
@@ -126,10 +67,13 @@ class SelfSummary: ReportSummary
 
 class SelfSummaryImplicit: SelfSummary, ImplicitSummary
 	summaryProp = &summarizeImplicitDobjProp
-	reportType = ImplicitActionAnnouncement
+	reportTypes = ImplicitActionAnnouncement
 ;
 
 class SelfSummaryExtra: SelfSummary
-	reportType = ExtraCommandReport
+	reportTypes = ExtraCommandReport
 ;
-*/
+
+class SelfSummaryAnnouncement: SelfSummary
+	reportTypes = MultiObjectAnnouncement
+;

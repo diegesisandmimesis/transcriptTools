@@ -123,6 +123,7 @@ class SelfReportManager: ReportManager
 	defaultReportSummaries = static [
 		SelfSummary,
 		SelfSummaryImplicit,
-		SelfSummaryExtra
+		SelfSummaryExtra,
+		SelfSummaryAnnouncement
 	]
 ;

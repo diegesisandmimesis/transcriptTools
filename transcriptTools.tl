@@ -20,6 +20,7 @@ source: reportManager/reportSummary.t
 source: reportManager/actionSummary.t
 source: reportManager/implicitSummary.t
 source: reportManager/defaultSummaries.t
+source: reportManager/selfSummaries.t
 source: transcriptToolsDebugger/transcriptToolsDebugger.t
 source: transcriptToolsDebugger/transcriptToolsDebuggerMods.t
 source: transcriptToolsDebugger/transcriptToolsDebuggerAction.t
