@@ -21,7 +21,8 @@ modify transcriptTools
 		MarkFailures,
 		TranscriptReportManager,
 		ImplicitGrouper,
-		CleanupAnnouncements
+		CleanupSingleAnnouncements,
+		CleanupOrphanedAnnouncements
 	]
 ;
 

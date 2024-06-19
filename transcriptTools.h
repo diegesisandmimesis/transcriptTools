@@ -39,6 +39,9 @@
 	checkDobjProp = &checkDobj##name \
 	actionDobjProp  = &actionDobj##name \
 	summarizeDobjProp = &summarizeDobj##name \
+	summarizeImplicitDobjProp = &summarizeImplicitDobj##name \
+	summarizeExtraDobjProp = &summarizeExtraDobj##name \
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobj##name \
 
 #undef DefineTIActionSub
 #define DefineTIActionSub(name, cls) \
@@ -53,7 +56,10 @@
 	checkIobjProp = &checkIobj##name \
 	actionDobjProp  = &actionDobj##name \
 	actionIobjProp = &actionIobj##name \
-	summarizeDobjProp = &summarizeDobj##name
+	summarizeDobjProp = &summarizeDobj##name \
+	summarizeImplicitDobjProp = &summarizeImplicitDobj##name \
+	summarizeExtraDobjProp = &summarizeExtraDobj##name \
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobj##name
 
 ReportSummary template @action;
 

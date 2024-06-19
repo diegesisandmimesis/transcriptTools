@@ -13,6 +13,9 @@
 class TakeSummary: ActionSummary
 	action = TakeAction
 	defaultMessageProp = &okayTakeMsg
+	summarize(data) {
+		return(inherited(data));
+	}
 ;
 
 class TakeFromSummary: ActionSummary
@@ -47,16 +50,42 @@ class ImplicitTakeSummary: ImplicitSummary
 // Special summarizer designed for use with SelfReportManager.
 // This calls dobjFor(Action) { summarize(data) {} } summarizers.
 class SelfSummary: ReportSummary
+	summaryProp = &summarizeDobjProp
+	reportTypes = static [
+		DefaultCommandReport,
+		BeforeCommandReport,
+		MainCommandReport,
+		AfterCommandReport
+	]
+
 	matchObject(obj) {
 		if((obj == nil) || (gAction == nil))
 			return(nil);
-		if(gAction.propType(&summarizeDobjProp) == TypeNil)
+
+		if(gAction.propType(self.summaryProp) == TypeNil) {
 			return(nil);
-		if(obj.propType(gAction.summarizeDobjProp) == TypeNil)
+		}
+
+		if(obj.propType(gAction.(self.summaryProp)) == TypeNil) {
 			return(nil);
+		}
 
 		return(true);
 	}
+
+	matchReportType(report) {
+		local i;
+
+		if(reportTypes == nil)
+			return(true);
+		if(!reportTypes.ofKind(Collection))
+			return(report.ofKind(reportTypes));
+		for(i = 1; i <= reportTypes.length; i++)
+			if(report.ofKind(reportTypes[i]))
+				return(true);
+		return(nil);
+	}
+
 	matchReport(report) {
 		local t;
 
@@ -68,11 +97,14 @@ class SelfSummary: ReportSummary
 			|| (isImplicit != report.isActionImplicit))
 			return(nil);
 
-		t = report.action_.propType(&summarizeDobjProp);
+		if(!matchReportType(report))
+			return(nil);
+
+		t = report.action_.propType(self.summaryProp);
 		if((t == nil) || (t == TypeNil))
 			return(nil);
 
-		t = report.dobj_.propType(report.action_.summarizeDobjProp);
+		t = report.dobj_.propType(report.action_.(self.summaryProp));
 		if((t == nil) || (t == TypeNil))
 			return(nil);
 
@@ -80,6 +112,17 @@ class SelfSummary: ReportSummary
 	}
 
 	summarize(data) {
-		return(data.dobj_.(data.action_.summarizeDobjProp)(data));
+		//local p;
+		//p = data.action_.(self.summaryProp);
+		return(data.dobj_.(data.action_.(self.summaryProp))(data));
 	}
+;
+
+class SelfSummaryImplicit: SelfSummary, ImplicitSummary
+	summaryProp = &summarizeImplicitDobjProp
+	reportType = ImplicitActionAnnouncement
+;
+
+class SelfSummaryExtra: SelfSummary
+	reportType = ExtraCommandReport
 ;

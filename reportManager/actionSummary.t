@@ -18,7 +18,8 @@ class ActionSummary: ReportSummary
 		if(report.action_ && (report.action_.noSummary == true))
 			return(nil);
 
-		return(_checkMessageProp(report));
+		//return(_checkMessageProp(report));
+		return(true);
 	}
 
 	_checkMessageProp(report) {

@@ -30,6 +30,8 @@ modify CommandTranscript
 	removeReport(report) {
 		if(reports_.indexOf(report) == nil)
 			return(nil);
+
+		_clearReportIterList();
 		reports_.removeElement(report);
 		return(true);
 	}

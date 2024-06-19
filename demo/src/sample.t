@@ -33,6 +33,10 @@ flowerReportManager: ReportManager reportManagerFor = Flower;
 	summarize(data) {
 		return('It\'s <<data.listDobjs()>>. ');
 	}
+	summarizeAnnouncement(r) {
+aioSay('\nfoo\n ');
+		return(inherited(r));
+	}
 ;
 
 class Flower: Thing 'flower*flowers' 'flower'
@@ -103,10 +107,15 @@ class AlarmItem: Thing
 		action() {
 			inherited();
 			//gNoSummary();
-			extraReport('As you pick up {a dobj/him}, an alarm
+			mainReport('As you pick up {a dobj/him}, an alarm
 				sounds in the distance. ');
 		}
 		summarize(data) {
+			return('As you pick up the <<data.listDobjs()>>, an
+				alarm sounds in the distance. ');
+		}
+		summarizeImplicit(data) {
+aioSay('\nimplicit\n ');
 			return('As you pick up the <<data.listDobjs()>>, an
 				alarm sounds in the distance. ');
 		}

@@ -120,5 +120,9 @@ class ActionReportManager: ReportManager
 class SelfReportManager: ReportManager
 	// SelfSummary is a bespoke summarizer designed for use with
 	// this report manager.
-	defaultReportSummaries = static [ SelfSummary ]
+	defaultReportSummaries = static [
+		SelfSummary,
+		SelfSummaryImplicit,
+		SelfSummaryExtra
+	]
 ;

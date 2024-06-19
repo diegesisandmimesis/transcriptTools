@@ -142,8 +142,17 @@ modify transcriptTools
 		// The patch
 		buf.append('modify ');
 		buf.append(toString(n));
-		buf.append(' summarizeDobjProp = ');
+		buf.append('\n\tsummarizeDobjProp = ');
 		buf.append('&summarizeDobj');
+		buf.append(n0);
+		buf.append('\n\tsummarizeImplicitDobjProp = ');
+		buf.append('&summarizeImplicitDobj');
+		buf.append(n0);
+		buf.append('\n\tsummarizeExtraDobjProp = ');
+		buf.append('&summarizeExtraDobj');
+		buf.append(n0);
+		buf.append('\n\tsummarizeAnnouncementDobjProp = ');
+		buf.append('&summarizeAnnouncementDobj');
 		buf.append(n0);
 		buf.append(';\n');
 	}

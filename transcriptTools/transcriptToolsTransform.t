@@ -33,6 +33,10 @@ modify CommandTranscript
 		return(v);
 	}
 
+	_clearReportIterList() {
+		_reportIterList = nil;
+	}
+
 	_generateReportIterList() {
 		local idx, v;
 

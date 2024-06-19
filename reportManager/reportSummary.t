@@ -41,9 +41,8 @@ class ReportSummary: TranscriptToolsWidget
 		BeforeCommandReport -> &_summarize,
 		MainCommandReport -> &_summarize,
 		AfterCommandReport -> &_summarize,
-		//FullCommandReport -> &_summarize,
 		FailCommandReport -> &_summarizeFailure,
-		ExtraCommandReport -> &_summarize
+		ExtraCommandReport -> &_summarizeExtra
 	]
 
 	// Preinit method.  Add ourselves to our report manager.
@@ -138,7 +137,7 @@ class ReportSummary: TranscriptToolsWidget
 		// Make sure we have enough reports to summarize before
 		// any sorting.
 		l = getMatchingReports(t, vec);
-		if(l.length < len)
+		if(_getReportCount(l) < len)
 			return;
 		
 		// Now we sort the associated reports into types
@@ -148,12 +147,24 @@ class ReportSummary: TranscriptToolsWidget
 		l.forEach(function(data) {
 			// If any of the types doesn't have our min number
 			// of reports, we have nothing to do.
-			if(data.vec.length < len)
+			if(_getReportCount(data.vec) < len)
 				return;
 
 			// Now merge and summarize the reports.
 			_mergeReports(t, data);
 		});
+	}
+
+	_getReportCount(lst) {
+		local n;
+
+		n = 0;
+		lst.forEach(function(o) {
+			if(o.dobjList_) n += o.dobjList_.length;
+			else n += 1;
+		});
+
+		return(n);
 	}
 
 	// Sorts the reports by type:  announcements with announcements,
@@ -232,7 +243,7 @@ class ReportSummary: TranscriptToolsWidget
 
 	// Get the distinguisher announcement for this report.
 	getReportDistinguisher(report, forceSingle?) {
-		local obj, n;
+		local lst, obj, n;
 
 		if(gameMain.useDistinguishersInAnnouncements == nil)
 			return(nil);
@@ -240,14 +251,17 @@ class ReportSummary: TranscriptToolsWidget
 		if((obj = report.dobj_) == nil)
 			return(nil);
 
-		if(report.dobjList_ && !forceSingle)
-			n = report.dobjList_.length;
+		if(report.dobjList_)
+			lst = report.dobjList_;
+		else
+			lst = report.action_.getResolvedObjList(DirectObject);
+
+		if(lst && !forceSingle)
+			n = lst.length;
 		else
 			n = 1;
 
-		return(obj.getBestDistinguisher(report.action_
-			.getResolvedObjList(DirectObject))
-			.reportName(obj, n));
+		return(obj.getBestDistinguisher(lst).reportName(obj, n));
 	}
 
 	// Stub method; up to subclasses to overwrite.
@@ -255,13 +269,15 @@ class ReportSummary: TranscriptToolsWidget
 
 	_summarize(r) { return(summarize(r)); }
 
+	summarizeAnnouncement(r) { return(getReportDistinguisher(r)); }
+
 	// Stock announcement summarizer;  this is really only useful
 	// for swapping out the "stock" one ("pebble:") for a plural or
 	// a custom report name ("pebbles:").
 	_summarizeAnnouncement(r) {
 		local txt;
 
-		if((txt = getReportDistinguisher(r)) == nil)
+		if((txt = summarizeAnnouncement(r)) == nil)
 			return(nil);
 
 		return('<./p0>\n<.announceObj>' + txt
@@ -271,17 +287,19 @@ class ReportSummary: TranscriptToolsWidget
 	_summarizeImplicit(r) {
 		local txt;
 
-		if((txt = summarize(r)) == nil)
+		if((txt = summarizeImplicit(r)) == nil)
 			return(nil);
 
 		r._summaryText = txt;
 
 		return('<./p0>\n<.assume>first ' + txt + '<./assume>\n');
 	}
+	summarizeImplicit(r) { return(summarize(r)); }
 
-	_summarizeFailure(r) {
-		return(nil);
-	}
+	_summarizeFailure(r) { return(nil); }
+
+	_summarizeExtra(r) { return(summarizeExtra(r)); }
+	summarizeExtra(r) { return(nil); }
 ;
 
 class FailureSummary: ReportSummary isFailure = true;
