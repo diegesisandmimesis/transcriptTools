@@ -102,32 +102,37 @@ class TakeToggle: Thing
 ;
 
 class AlarmItem: Thing
+	alarmMsg(dobjPhrase) {
+		return('As {you/he} pick{s} up the <<dobjPhrase>>, an alarm
+			sounds in the distance. ');
+	}
 	dobjFor(Take) {
 		action() {
 			inherited();
 			//gNoSummary();
+/*
 			mainReport('As {you/he} pick{s} up {a dobj/him},
 				an alarm sounds in the distance. ');
+*/
+			mainReport(alarmMsg(name));
 		}
+
 		summarize(data) {
+/*
 			return('As {you/he} pick{s} up the <<data.listDobjs()>>,
 				an alarm sounds in the distance. ');
+*/
+			return(alarmMsg(data.listDobjs()));
 		}
+
 		summarizeImplicit(data) {
 /*
-			local idx, t;
-
-			t = data.transcript_;
-			t.forEachReportIter(function(o) {
-				if(o[1].iter_ != data.iter_)
-					return;
-				idx = t.reports_.indexOf(o[o.length]);
-				t.reports_.insertAt(idx, new AfterCommandReport('An alarm sounds. '));
-			});
+			extraSummaryReport(data, 'As {you/he} pick{s} up
+			the <<data.listDobjs()>>, an alarm sounds in the
+				distance. ');
 */
-			extraSummaryReport(data, 'An alarm sounds. ');
-			//extraReport('An alarm sounds. ');
-			return('{you/he} take{s} the <<data.listDobjs()>>');
+			extraSummaryReport(data, alarmMsg(data.listDobjs()));
+			return(inherited(data));
 		}
 	}
 ;
