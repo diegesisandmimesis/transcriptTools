@@ -2,7 +2,6 @@ name: transcriptTools Library
 source: transcriptTools/transcriptTools.t
 source: transcriptTools/transcriptToolsMods.t
 source: transcriptTools/transcriptToolsPatch.t
-source: transcriptTools/transcriptToolsAction.t
 source: transcriptTools/transcriptToolsConjugation.t
 source: transcriptTools/transcriptToolsTransform.t
 source: transcriptTools/transcriptToolsPreinit.t

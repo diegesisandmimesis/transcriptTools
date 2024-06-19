@@ -2,6 +2,11 @@
 //
 // transcriptToolsConfig.t
 //
+//	transcriptTools configuration.
+//
+//	This is where the default report managers and summarizers are set.
+//	In general you probably won't have to change any of this.
+//
 //
 #include <adv3.h>
 #include <en_us.h>
@@ -16,6 +21,7 @@ transcriptToolsModuleID: ModuleID {
         listingOrder = 99
 }
 
+// The tools used by the transcriptTools singleton
 modify transcriptTools
 	defaultTools = static [
 		MarkFailures,
@@ -27,6 +33,9 @@ modify transcriptTools
 	]
 ;
 
+// Define report managers used by the "main" transcript report manager.
+// Generally there's only one TranscriptReportManager instance, owned
+// by the transcriptTools singleton, above.
 modify TranscriptReportManager
 	defaultReportManagers = static [
 		ActionReportManager,
@@ -34,6 +43,9 @@ modify TranscriptReportManager
 	]
 ;
 
+// Add the default summaries to ActionReportManager instances.  Once again
+// there's usually only one ActionReportManager instance, the one declared
+// as one of the default report managers above.
 modify ActionReportManager
 	defaultReportSummaries = static [
 		TakeSummary,

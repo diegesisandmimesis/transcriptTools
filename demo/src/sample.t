@@ -102,23 +102,31 @@ class TakeToggle: Thing
 ;
 
 class AlarmItem: Thing
+	alarmReport = 'As {you/he} pick{s} up {a dobj/him}, an alarm sounds
+		in the distance. '
+
 	dobjFor(Take) {
 		action() {
 			inherited();
 			// The normal action report.
+/*
 			mainReport('As {you/he} pick{s} up {a dobj/him}, an
 				alarm sounds in the distance. ');
+*/
+			mainReport(&alarmReport);
 		}
 
 		// This method will be called whenever one of our >TAKE
 		// action reports is summarized away.
 		whenSummarized(data) {
+			if(data.report.messageProp_ != &alarmReport)
+				return;
 			// We add an special kind of extra report that's
 			// only used for important information removed by
 			// summaries.  This will get stuck into the
 			// report group the >TAKE action is in.
 			extraSummaryReport(data, 'As {you/he} pick{s} up
-				<<data.listDobjSubset(Stone)>>, an alarm
+				<<data.summary.listDobjSubset(Stone)>>, an alarm
 				sounds in the distance. ');
 		}
 	}

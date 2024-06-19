@@ -2,6 +2,8 @@
 //
 // reportSummary.t
 //
+//	ReportSummary base class and related utility classes.
+//
 //
 #include <adv3.h>
 #include <en_us.h>
@@ -17,11 +19,24 @@ class _MergeData: object
 	construct(v) { _reportClass = v; }
 ;
 
+// Data structure used internally for grouping reports by distinguisher.
 class _DistinguisherData: object
 	_distinguisher = nil
 	vec = perInstance(new Vector())
 
 	construct(v) { _distinguisher = v; }
+;
+
+// Data structure used as an argument to whenSummarized().  Used to
+// ping objects that want to be notified when reports involving them
+// are removed by a summarizer.
+class SummaryNotification: object
+	report = nil	// report being removed by summary
+	summary = nil	// the summary so far
+	construct(v0, v1) {
+		report = v0;
+		summary = v1;
+	}
 ;
 
 class ReportSummary: TranscriptToolsWidget
@@ -219,30 +234,32 @@ class ReportSummary: TranscriptToolsWidget
 		if((txt = (_reportClasses[cls])(r)) == nil)
 			return;
 
-		l.forEach({ x: t.removeReport(x) });
-
-		notifyDobjs(l, r);
+		l.forEach({ x: removeReport(t, x, r) });
 
 		r.messageText_ = txt;
 	}
 
-	notifyDobjs(l, data) {
-		local d;
+	removeReport(t, report, data) {
+		notifyDobj(report, data);
+		t.removeReport(report);
+	}
 
-		if((data == nil) || (l == nil))
+	notifyDobj(report, data) {
+		if((report == nil) || (data == nil))
 			return;
-		if(data.action_ == nil)
+
+		if((report.dobj_ == nil) || (data.action_ == nil))
 			return;
-		l.forEach(function(o) {
-			if((d = o.dobj_) == nil)
-				return;
-			if(data.action_.whenSummarizedDobjProp == nil)
-				return;
-			if(d.propType(data.action_.whenSummarizedDobjProp)
-				== nil)
-				return;
-			d.(data.action_.whenSummarizedDobjProp)(data);
-		});
+
+		if(data.action_.whenSummarizedDobjProp == nil)
+			return;
+
+		if(report.dobj_.propType(data.action_.whenSummarizedDobjProp)
+			== TypeNil)
+			return;
+
+		report.dobj_.(data.action_.whenSummarizedDobjProp)(
+			new SummaryNotification(report, data));
 	}
 
 	// Merge and summarize the reports.
@@ -278,10 +295,10 @@ class ReportSummary: TranscriptToolsWidget
 		if((obj = report.dobj_) == nil)
 			return(nil);
 
-		if(report.dobjList_)
-			lst = report.dobjList_;
-		else
-			lst = report.action_.getResolvedObjList(DirectObject);
+		//if(report.dobjList_)
+			//lst = report.dobjList_;
+		//else
+		lst = report.action_.getResolvedObjList(DirectObject);
 
 		if(lst && !forceSingle)
 			n = lst.length;

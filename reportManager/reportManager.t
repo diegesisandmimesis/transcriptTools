@@ -10,19 +10,31 @@
 
 #include "transcriptTools.h"
 
+// Base report manager class
 class ReportManager: TranscriptToolsWidget
+	// If set, we only manage reports for the given object type.
 	reportManagerFor = nil
+
+	// Only summarize when we have at least this many matching reports.
 	minSummaryLength = 2
 
+	// List of summarizers to add at startup.  Configured in
+	// transcriptToolsConfig.t
 	defaultReportSummaries = nil
+
+	// List of our summarizers.
 	_reportManagerSummaries = perInstance(new Vector())
 
+	// PreinitMethod.
 	initializeReportManager() {
 		initializeReportManagerFor();
 		initializeReportManagerDefaultSummaries();
 	}
 
+	// Handle object-specific setup stuff.
 	initializeReportManagerFor() {
+		// If we're not report manager for an object type, nothing
+		// to do.
 		if(reportManagerFor == nil)
 			return;
 
@@ -30,12 +42,15 @@ class ReportManager: TranscriptToolsWidget
 			reportManagerFor = [ reportManagerFor ];
 
 		reportManagerFor.forEach(function(cls) {
+			// Let all instances of the class know we're
+			// their report manager.
 			forEachInstance(cls, function(o) {
 				o.reportManager = self;
 			});
 		});
 	}
 
+	// Returns boolean true if we're a report manager for the given object.
 	isReportManagerFor(obj) {
 		local i;
 
@@ -105,21 +120,25 @@ class ReportManager: TranscriptToolsWidget
 		return(true);
 	}
 
+	// Main lifecycle method.  Ping our summarizers to run on the
+	// current transcript.
 	run(t, v) { forEachSummary({ x: x._run(t, v) }); }
 
+	// Utility method to iterate over our summarizers.
 	forEachSummary(fn) {  _reportManagerSummaries.forEach({ x: fn(x) }); }
 ;
 
 // General non-object-specific report manager.
 class ActionReportManager: ReportManager
+	// We match any non-nil object.
 	matchReportDobj(obj) { return(obj != nil); }
 ;
 
 // Report manager that handles dobjFor(Action) { summarize(data) {} }
 // logic.
 class SelfReportManager: ReportManager
-	// SelfSummary is a bespoke summarizer designed for use with
-	// this report manager.
+	// This is a list of bespoke summarizers designed to be used
+	// by us.  They live in reportManager/selfSummaries.t
 	defaultReportSummaries = static [
 		SelfSummary,
 		SelfSummaryImplicit,

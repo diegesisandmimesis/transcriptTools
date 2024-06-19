@@ -2,6 +2,10 @@
 //
 // transcriptReportManager.t
 //
+//	Base report manager-manager.  This is the widget that keeps track
+//	of all the report managers and pings them to manipulate the transcript.
+//
+//
 #include <adv3.h>
 #include <en_us.h>
 
@@ -10,7 +14,10 @@
 class TranscriptReportManager: TranscriptTool
 	toolPriority = 500
 
+	// Optional list of report managers to add at preinit.
 	defaultReportManagers = nil
+
+	// List of our report managers.
 	_reportManagers = nil
 
 	// Preinit method.
@@ -33,6 +40,7 @@ class TranscriptReportManager: TranscriptTool
 		_reportManagers.append(obj);
 	}
 
+	// Returns the report manager, if any, matching the given class.
 	getReportManager(cls) {
 		local i;
 
@@ -68,20 +76,29 @@ class TranscriptReportManager: TranscriptTool
 		});
 	}
 
+	// Entry point turning the turn.
+	// First arg is the transcript, second is the vector of reports.
 	run(t, v) {
 		local l;
 
+		// Generate a list of the per-object report managers that
+		// need to run.
 		l = new Vector();
 		t.forEachReport(function(o) {
 			if(o.dobj_ && o.dobj_.reportManager) {
 				l.append(o.dobj_.reportManager);
 			}
 		});
+
+		// Run them.
 		l.forEach({ x: x._run(t, v) });
 
+		// Now run all the "built-in" report managers.
 		forEachReportManager({ x: x._run(t, v) });
 	}
 
+	// Convenience method to iterate over all the "built-in" report
+	// managers.
 	forEachReportManager(fn) {
 		if(_reportManagers == nil)
 			return;

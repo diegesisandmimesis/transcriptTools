@@ -2,6 +2,8 @@
 //
 // transcriptToolsDebugger.t
 //
+//	Interactive debugger for the transcript.
+//
 #include <adv3.h>
 #include <en_us.h>
 

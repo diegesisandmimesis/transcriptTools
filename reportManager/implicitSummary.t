@@ -2,6 +2,8 @@
 //
 // implicitSummary.t
 //
+//	Base class for implicit action summaries.
+//
 //
 #include <adv3.h>
 #include <en_us.h>

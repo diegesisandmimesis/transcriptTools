@@ -25,14 +25,18 @@ modify CommandReport
 ;
 
 modify CommandTranscript
-	noSummary = nil
+	noSummary = nil		// boolean flag; halts summaries if true
 
+	// Convenience method.  Removes the given report from the transcript.
 	removeReport(report) {
 		if(reports_.indexOf(report) == nil)
 			return(nil);
 
+		// Clear out the iter cache, forcing re-calculation if
+		// we try to use it later.
 		_clearReportIterList();
 		reports_.removeElement(report);
+
 		return(true);
 	}
 ;

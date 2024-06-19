@@ -2,6 +2,8 @@
 //
 // transcriptGrouper.t
 //
+//	Post-processors that group reports.
+//
 //
 #include <adv3.h>
 #include <en_us.h>
@@ -12,8 +14,11 @@ class TranscriptGrouper: TranscriptPostprocessor
 	toolPriority = 400
 ;
 
-// Go through and mark all reports in a group as failures if the group
-// itself is marked as a failure
+// Group implicit action reports together, when possible.
+// This is more or less a replacement for adv3's implicitGroupTransform
+// TranscriptTransfor.  It's re-implemented here most to add hooks that
+// allow the transcriptTools summarizer logic to toggle summaries on and
+// off.
 class ImplicitGrouper: TranscriptGrouper
 	postprocess(t, vec) {
 		_handleNotes(vec);

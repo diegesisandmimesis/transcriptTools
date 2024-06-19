@@ -183,20 +183,19 @@ transcriptTools: TranscriptToolsWidget
 	}
 
 	_extraSummaryReport(data, txt) {
-		local idx, l, t;
+		local idx, l, r, t;
 
-		if((t = data.transcript_) == nil)
+		if((r = data.report) == nil)
 			return;
 
-		l = t.reports_.subset({ x: x.iter_ == data.iter_ });
+		if((t = data.summary.transcript_) == nil)
+			return;
+
+		l = t.reports_.subset({ x: x.iter_ == r.iter_ });
 		if(l.length < 1)
 			return;
 
-		idx = t.reports_.indexOf(l[l.length]);
-		t.reports_.insertAt(idx, new CommandSepAnnouncement());
-		idx += 1;
-		t.reports_.insertAt(idx, new ExtraSummaryReport(txt));
-		idx += 1;
-		t.reports_.insertAt(idx, new CommandSepAnnouncement());
+		idx = t.reports_.indexOf(l[1]);
+		t.insertReportAt(idx, new ExtraSummaryReport(txt));
 	}
 ;

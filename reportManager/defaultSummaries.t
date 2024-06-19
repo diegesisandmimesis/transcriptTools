@@ -10,38 +10,14 @@
 
 #include "transcriptTools.h"
 
-class TakeSummary: ActionSummary
-	action = TakeAction
-	defaultMessageProp = &okayTakeMsg
-	summarize(data) {
-		return(inherited(data));
-	}
-;
-
-class TakeFromSummary: ActionSummary
-	action = TakeFromAction
-;
-
-class DropSummary: ActionSummary
-	action = DropAction
-;
-
-class PutOnSummary: ActionSummary
-	action = PutOnAction
-;
-
+class TakeSummary: ActionSummary action = TakeAction;
+class TakeFromSummary: ActionSummary action = TakeFromAction;
+class DropSummary: ActionSummary action = DropAction;
+class PutOnSummary: ActionSummary action = PutOnAction;
 class PutInSummary: ActionSummary action = PutInAction;
 class PutUnderSummary: ActionSummary action = PutUnderAction;
 class PutBehindSummary: ActionSummary action = PutBehindAction;
 
-modify playerActionMessages
-	cannotTakeThatMsg = '{You/he} {can\'t} take {that dobj/him}. '
-;
+class TakeFailureSummary: ActionFailureSummary action = TakeAction;
 
-class TakeFailureSummary: ActionFailureSummary
-	action = TakeAction
-;
-
-class ImplicitTakeSummary: ImplicitSummary
-	action = TakeAction
-;
+class ImplicitTakeSummary: ImplicitSummary action = TakeAction;

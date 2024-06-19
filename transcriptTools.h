@@ -29,7 +29,7 @@
 #define gReportAction(r) (gIsReport(r) ? r.action_ : nil)
 
 // Patches for action definition macros.
-// Identical to stock plus the summarizeDobjProp property
+// Identical to stock plus the summary-specific properties
 #undef DefineTActionSub
 #define DefineTActionSub(name, cls) \
 	DefineAction(name, cls) \
@@ -65,6 +65,7 @@
 
 ReportSummary template @action;
 
+// Macro to add an extra summary.  Used by e.g. whenSummarized() methods.
 #define extraSummaryReport(d, txt) \
 	(transcriptTools._extraSummaryReport(d, txt))
 
