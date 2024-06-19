@@ -39,13 +39,19 @@ modify CommandReport
 	_orList(lst)
 		{ return(lst ? equivalentOrLister.makeSimpleList(lst) : nil); }
 
-	listDobjsWithAnd() { return(_andList(dobjList_)); }
-	listDobjsWithOr() { return(_orList(dobjList_)); }
-	listDobjs() { return(listDobjsWithAnd()); }
+	listDobjsWithAnd(l?) { return(_andList(l ? l : dobjList_)); }
+	listDobjsWithOr(l?) { return(_orList(l ? l : dobjList_)); }
+	listDobjs(l?) { return(listDobjsWithAnd(l)); }
 
 	listIobjsWithAnd() { return(_andList(iobjList_)); }
 	listIobjsWithOr() { return(_orList(iobjList_)); }
 	listIobjs() { return(listIobjsWithAnd()); }
+
+	_dobjSubset(c) { return(dobjList_.subset({ x: x.ofKind(c) })); }
+
+	listDobjSubset(c) { return(listDobjSubsetWithAnd(c)); }
+	listDobjSubsetWithAnd(c) { return(listDobjsWithAnd(_dobjSubset(c))); }
+	listDobjSubsetWithOr(c) { return(listDobjsWithOr(_dobjSubset(c))); }
 
 	_actionClause(dList, iList, inf?) {
 		local a;

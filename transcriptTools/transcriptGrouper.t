@@ -95,14 +95,16 @@ class ImplicitGrouper: TranscriptGrouper
 					.getOriginalAction(), ctx);
 			}
 
-			while((cur.justTrying && i < len && lst[i+1].justTrying)
-				|| (cur.justAsking && i < len && lst[i+1].justAsking)) {
+			while((cur.justTrying && (i < len)
+				&& lst[i+1].justTrying)
+				|| (cur.justAsking && (i < len)
+				&& lst[i+1].justAsking)) {
 				i += 1;
 				cur = lst[i];
 				ctx.isInSublist = true;
 			}
 
-			if(txt != '' && curTxt != '')
+			if((txt != '') && (curTxt != ''))
 				txt += ', then ';
 			txt += curTxt;
 		}

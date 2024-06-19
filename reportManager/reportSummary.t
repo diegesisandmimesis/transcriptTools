@@ -30,6 +30,7 @@ class ReportSummary: TranscriptToolsWidget
 	isImplicit = nil		// is this an implicit action?
 
 	reportManager = nil		// our parent report manager
+	minSummaryLength = (reportManager ? reportManager.minSummaryLength : 2)
 
 	_summaryText = nil
 
@@ -132,7 +133,7 @@ class ReportSummary: TranscriptToolsWidget
 		if(!reportManager)
 			return;
 
-		len = reportManager.minSummaryLength;
+		len = minSummaryLength;
 
 		// Make sure we have enough reports to summarize before
 		// any sorting.
@@ -194,10 +195,11 @@ class ReportSummary: TranscriptToolsWidget
 	}
 
 	_mergeReportList(t, lst, cls) {
-		local i, r, txt;
+		local i, l, r, txt;
 
 		r = lst[1];
 
+		l = new Vector(lst.length - 1);
 		for(i = 1; i <= lst.length; i++) {
 			// Add all the dobjs and iobjs from the individual
 			// reports onto the first report.
@@ -206,7 +208,7 @@ class ReportSummary: TranscriptToolsWidget
 
 			// Remove all the reports except the first one.
 			if(i != 1)
-				t.removeReport(lst[i]);
+				l.append(lst[i]);
 		}
 
 		r.transcript_ = t;
@@ -217,7 +219,30 @@ class ReportSummary: TranscriptToolsWidget
 		if((txt = (_reportClasses[cls])(r)) == nil)
 			return;
 
+		l.forEach({ x: t.removeReport(x) });
+
+		notifyDobjs(l, r);
+
 		r.messageText_ = txt;
+	}
+
+	notifyDobjs(l, data) {
+		local d;
+
+		if((data == nil) || (l == nil))
+			return;
+		if(data.action_ == nil)
+			return;
+		l.forEach(function(o) {
+			if((d = o.dobj_) == nil)
+				return;
+			if(data.action_.whenSummarizedDobjProp == nil)
+				return;
+			if(d.propType(data.action_.whenSummarizedDobjProp)
+				== nil)
+				return;
+			d.(data.action_.whenSummarizedDobjProp)(data);
+		});
 	}
 
 	// Merge and summarize the reports.

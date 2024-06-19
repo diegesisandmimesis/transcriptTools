@@ -22,7 +22,8 @@ modify transcriptTools
 		TranscriptReportManager,
 		ImplicitGrouper,
 		CleanupSingleAnnouncements,
-		CleanupOrphanedAnnouncements
+		CleanupOrphanedAnnouncements,
+		CleanupExtraSummaryReports
 	]
 ;
 

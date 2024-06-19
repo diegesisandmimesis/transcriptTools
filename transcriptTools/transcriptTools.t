@@ -10,6 +10,8 @@
 
 #include "transcriptTools.h"
 
+class ExtraSummaryReport: AfterCommandReport;
+
 // Generic class for stuff in the module.
 class TranscriptToolsObject: Syslog syslogID = 'transcriptTools';
 
@@ -193,7 +195,7 @@ transcriptTools: TranscriptToolsWidget
 		idx = t.reports_.indexOf(l[l.length]);
 		t.reports_.insertAt(idx, new CommandSepAnnouncement());
 		idx += 1;
-		t.reports_.insertAt(idx, new AfterCommandReport(txt));
+		t.reports_.insertAt(idx, new ExtraSummaryReport(txt));
 		idx += 1;
 		t.reports_.insertAt(idx, new CommandSepAnnouncement());
 	}

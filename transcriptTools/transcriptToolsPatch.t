@@ -19,784 +19,941 @@ modify StarboardAction
 	summarizeDobjProp = &summarizeDobjStarboard
 	summarizeImplicitDobjProp = &summarizeImplicitDobjStarboard
 	summarizeExtraDobjProp = &summarizeExtraDobjStarboard
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStarboard;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStarboard
+	whenSummarizedDobjProp = &whenSummarizedDobjStarboard;
 modify WestAction
 	summarizeDobjProp = &summarizeDobjWest
 	summarizeImplicitDobjProp = &summarizeImplicitDobjWest
 	summarizeExtraDobjProp = &summarizeExtraDobjWest
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjWest;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjWest
+	whenSummarizedDobjProp = &whenSummarizedDobjWest;
 modify PortAction
 	summarizeDobjProp = &summarizeDobjPort
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPort
 	summarizeExtraDobjProp = &summarizeExtraDobjPort
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPort;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPort
+	whenSummarizedDobjProp = &whenSummarizedDobjPort;
 modify PourAction
 	summarizeDobjProp = &summarizeDobjPour
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPour
 	summarizeExtraDobjProp = &summarizeExtraDobjPour
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPour;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPour
+	whenSummarizedDobjProp = &whenSummarizedDobjPour;
 modify TurnAction
 	summarizeDobjProp = &summarizeDobjTurn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTurn
 	summarizeExtraDobjProp = &summarizeExtraDobjTurn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurn
+	whenSummarizedDobjProp = &whenSummarizedDobjTurn;
 modify ListenImplicitAction
 	summarizeDobjProp = &summarizeDobjListenImplicit
 	summarizeImplicitDobjProp = &summarizeImplicitDobjListenImplicit
 	summarizeExtraDobjProp = &summarizeExtraDobjListenImplicit
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjListenImplicit;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjListenImplicit
+	whenSummarizedDobjProp = &whenSummarizedDobjListenImplicit;
 modify PushNorthAction
 	summarizeDobjProp = &summarizeDobjPushNorth
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushNorth
 	summarizeExtraDobjProp = &summarizeExtraDobjPushNorth
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushNorth;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushNorth
+	whenSummarizedDobjProp = &whenSummarizedDobjPushNorth;
 modify PushSouthAction
 	summarizeDobjProp = &summarizeDobjPushSouth
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushSouth
 	summarizeExtraDobjProp = &summarizeExtraDobjPushSouth
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushSouth;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushSouth
+	whenSummarizedDobjProp = &whenSummarizedDobjPushSouth;
 modify NortheastAction
 	summarizeDobjProp = &summarizeDobjNortheast
 	summarizeImplicitDobjProp = &summarizeImplicitDobjNortheast
 	summarizeExtraDobjProp = &summarizeExtraDobjNortheast
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNortheast;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNortheast
+	whenSummarizedDobjProp = &whenSummarizedDobjNortheast;
 modify SoutheastAction
 	summarizeDobjProp = &summarizeDobjSoutheast
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSoutheast
 	summarizeExtraDobjProp = &summarizeExtraDobjSoutheast
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSoutheast;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSoutheast
+	whenSummarizedDobjProp = &whenSummarizedDobjSoutheast;
 modify InventoryAction
 	summarizeDobjProp = &summarizeDobjInventory
 	summarizeImplicitDobjProp = &summarizeImplicitDobjInventory
 	summarizeExtraDobjProp = &summarizeExtraDobjInventory
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjInventory;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjInventory
+	whenSummarizedDobjProp = &whenSummarizedDobjInventory;
 modify NorthwestAction
 	summarizeDobjProp = &summarizeDobjNorthwest
 	summarizeImplicitDobjProp = &summarizeImplicitDobjNorthwest
 	summarizeExtraDobjProp = &summarizeExtraDobjNorthwest
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNorthwest;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNorthwest
+	whenSummarizedDobjProp = &whenSummarizedDobjNorthwest;
 modify SouthwestAction
 	summarizeDobjProp = &summarizeDobjSouthwest
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSouthwest
 	summarizeExtraDobjProp = &summarizeExtraDobjSouthwest
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSouthwest;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSouthwest
+	whenSummarizedDobjProp = &whenSummarizedDobjSouthwest;
 modify LieOnAction
 	summarizeDobjProp = &summarizeDobjLieOn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLieOn
 	summarizeExtraDobjProp = &summarizeExtraDobjLieOn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLieOn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLieOn
+	whenSummarizedDobjProp = &whenSummarizedDobjLieOn;
 modify DetachFromAction
 	summarizeDobjProp = &summarizeDobjDetachFrom
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDetachFrom
 	summarizeExtraDobjProp = &summarizeExtraDobjDetachFrom
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDetachFrom;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDetachFrom
+	whenSummarizedDobjProp = &whenSummarizedDobjDetachFrom;
 modify LookBehindAction
 	summarizeDobjProp = &summarizeDobjLookBehind
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLookBehind
 	summarizeExtraDobjProp = &summarizeExtraDobjLookBehind
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookBehind;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookBehind
+	whenSummarizedDobjProp = &whenSummarizedDobjLookBehind;
 modify ParseDebugAction
 	summarizeDobjProp = &summarizeDobjParseDebug
 	summarizeImplicitDobjProp = &summarizeImplicitDobjParseDebug
 	summarizeExtraDobjProp = &summarizeExtraDobjParseDebug
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjParseDebug;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjParseDebug
+	whenSummarizedDobjProp = &whenSummarizedDobjParseDebug;
 modify CleanAction
 	summarizeDobjProp = &summarizeDobjClean
 	summarizeImplicitDobjProp = &summarizeImplicitDobjClean
 	summarizeExtraDobjProp = &summarizeExtraDobjClean
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClean;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClean
+	whenSummarizedDobjProp = &whenSummarizedDobjClean;
 modify BreakAction
 	summarizeDobjProp = &summarizeDobjBreak
 	summarizeImplicitDobjProp = &summarizeImplicitDobjBreak
 	summarizeExtraDobjProp = &summarizeExtraDobjBreak
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBreak;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBreak
+	whenSummarizedDobjProp = &whenSummarizedDobjBreak;
 modify DebugAction
 	summarizeDobjProp = &summarizeDobjDebug
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDebug
 	summarizeExtraDobjProp = &summarizeExtraDobjDebug
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDebug;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDebug
+	whenSummarizedDobjProp = &whenSummarizedDobjDebug;
 modify ClimbAction
 	summarizeDobjProp = &summarizeDobjClimb
 	summarizeImplicitDobjProp = &summarizeImplicitDobjClimb
 	summarizeExtraDobjProp = &summarizeExtraDobjClimb
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClimb;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClimb
+	whenSummarizedDobjProp = &whenSummarizedDobjClimb;
 modify BoardAction
 	summarizeDobjProp = &summarizeDobjBoard
 	summarizeImplicitDobjProp = &summarizeImplicitDobjBoard
 	summarizeExtraDobjProp = &summarizeExtraDobjBoard
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBoard;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBoard
+	whenSummarizedDobjProp = &whenSummarizedDobjBoard;
 modify OopsIAction
 	summarizeDobjProp = &summarizeDobjOopsI
 	summarizeImplicitDobjProp = &summarizeImplicitDobjOopsI
 	summarizeExtraDobjProp = &summarizeExtraDobjOopsI
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjOopsI;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjOopsI
+	whenSummarizedDobjProp = &whenSummarizedDobjOopsI;
 modify SitOnAction
 	summarizeDobjProp = &summarizeDobjSitOn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSitOn
 	summarizeExtraDobjProp = &summarizeExtraDobjSitOn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSitOn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSitOn
+	whenSummarizedDobjProp = &whenSummarizedDobjSitOn;
 modify PutInAction
 	summarizeDobjProp = &summarizeDobjPutIn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPutIn
 	summarizeExtraDobjProp = &summarizeExtraDobjPutIn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutIn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutIn
+	whenSummarizedDobjProp = &whenSummarizedDobjPutIn;
 modify HelloAction
 	summarizeDobjProp = &summarizeDobjHello
 	summarizeImplicitDobjProp = &summarizeImplicitDobjHello
 	summarizeExtraDobjProp = &summarizeExtraDobjHello
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjHello;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjHello
+	whenSummarizedDobjProp = &whenSummarizedDobjHello;
 modify AttackWithAction
 	summarizeDobjProp = &summarizeDobjAttackWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjAttackWith
 	summarizeExtraDobjProp = &summarizeExtraDobjAttackWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjAttackWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjAttackWith
+	whenSummarizedDobjProp = &whenSummarizedDobjAttackWith;
 modify PutOnAction
 	summarizeDobjProp = &summarizeDobjPutOn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPutOn
 	summarizeExtraDobjProp = &summarizeExtraDobjPutOn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutOn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutOn
+	whenSummarizedDobjProp = &whenSummarizedDobjPutOn;
 modify CloseAction
 	summarizeDobjProp = &summarizeDobjClose
 	summarizeImplicitDobjProp = &summarizeImplicitDobjClose
 	summarizeExtraDobjProp = &summarizeExtraDobjClose
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClose;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClose
+	whenSummarizedDobjProp = &whenSummarizedDobjClose;
 modify LightAction
 	summarizeDobjProp = &summarizeDobjLight
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLight
 	summarizeExtraDobjProp = &summarizeExtraDobjLight
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLight;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLight
+	whenSummarizedDobjProp = &whenSummarizedDobjLight;
 modify DrinkAction
 	summarizeDobjProp = &summarizeDobjDrink
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDrink
 	summarizeExtraDobjProp = &summarizeExtraDobjDrink
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDrink;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDrink
+	whenSummarizedDobjProp = &whenSummarizedDobjDrink;
 modify SleepAction
 	summarizeDobjProp = &summarizeDobjSleep
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSleep
 	summarizeExtraDobjProp = &summarizeExtraDobjSleep
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSleep;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSleep
+	whenSummarizedDobjProp = &whenSummarizedDobjSleep;
 modify StandAction
 	summarizeDobjProp = &summarizeDobjStand
 	summarizeImplicitDobjProp = &summarizeImplicitDobjStand
 	summarizeExtraDobjProp = &summarizeExtraDobjStand
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStand;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStand
+	whenSummarizedDobjProp = &whenSummarizedDobjStand;
 modify SmellAction
 	summarizeDobjProp = &summarizeDobjSmell
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSmell
 	summarizeExtraDobjProp = &summarizeExtraDobjSmell
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSmell;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSmell
+	whenSummarizedDobjProp = &whenSummarizedDobjSmell;
 modify EnterAction
 	summarizeDobjProp = &summarizeDobjEnter
 	summarizeImplicitDobjProp = &summarizeImplicitDobjEnter
 	summarizeExtraDobjProp = &summarizeExtraDobjEnter
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjEnter;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjEnter
+	whenSummarizedDobjProp = &whenSummarizedDobjEnter;
 modify TasteAction
 	summarizeDobjProp = &summarizeDobjTaste
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTaste
 	summarizeExtraDobjProp = &summarizeExtraDobjTaste
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTaste;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTaste
+	whenSummarizedDobjProp = &whenSummarizedDobjTaste;
 modify ScrewAction
 	summarizeDobjProp = &summarizeDobjScrew
 	summarizeImplicitDobjProp = &summarizeImplicitDobjScrew
 	summarizeExtraDobjProp = &summarizeExtraDobjScrew
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjScrew;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjScrew
+	whenSummarizedDobjProp = &whenSummarizedDobjScrew;
 modify UnlockWithAction
 	summarizeDobjProp = &summarizeDobjUnlockWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnlockWith
 	summarizeExtraDobjProp = &summarizeExtraDobjUnlockWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnlockWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnlockWith
+	whenSummarizedDobjProp = &whenSummarizedDobjUnlockWith;
 modify NorthAction
 	summarizeDobjProp = &summarizeDobjNorth
 	summarizeImplicitDobjProp = &summarizeImplicitDobjNorth
 	summarizeExtraDobjProp = &summarizeExtraDobjNorth
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNorth;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNorth
+	whenSummarizedDobjProp = &whenSummarizedDobjNorth;
 modify PushTravelEnterAction
 	summarizeDobjProp = &summarizeDobjPushTravelEnter
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravelEnter
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravelEnter
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelEnter;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelEnter
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravelEnter;
 modify ExitsAction
 	summarizeDobjProp = &summarizeDobjExits
 	summarizeImplicitDobjProp = &summarizeImplicitDobjExits
 	summarizeExtraDobjProp = &summarizeExtraDobjExits
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjExits;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjExits
+	whenSummarizedDobjProp = &whenSummarizedDobjExits;
 modify PushTravelAction
 	summarizeDobjProp = &summarizeDobjPushTravel
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravel
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravel
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravel;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravel
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravel;
 modify UnplugFromAction
 	summarizeDobjProp = &summarizeDobjUnplugFrom
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnplugFrom
 	summarizeExtraDobjProp = &summarizeExtraDobjUnplugFrom
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnplugFrom;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnplugFrom
+	whenSummarizedDobjProp = &whenSummarizedDobjUnplugFrom;
 modify SouthAction
 	summarizeDobjProp = &summarizeDobjSouth
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSouth
 	summarizeExtraDobjProp = &summarizeExtraDobjSouth
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSouth;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSouth
+	whenSummarizedDobjProp = &whenSummarizedDobjSouth;
 modify ThrowAction
 	summarizeDobjProp = &summarizeDobjThrow
 	summarizeImplicitDobjProp = &summarizeImplicitDobjThrow
 	summarizeExtraDobjProp = &summarizeExtraDobjThrow
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrow;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrow
+	whenSummarizedDobjProp = &whenSummarizedDobjThrow;
 modify GoBackAction
 	summarizeDobjProp = &summarizeDobjGoBack
 	summarizeImplicitDobjProp = &summarizeImplicitDobjGoBack
 	summarizeExtraDobjProp = &summarizeExtraDobjGoBack
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGoBack;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGoBack
+	whenSummarizedDobjProp = &whenSummarizedDobjGoBack;
 modify ExtinguishAction
 	summarizeDobjProp = &summarizeDobjExtinguish
 	summarizeImplicitDobjProp = &summarizeImplicitDobjExtinguish
 	summarizeExtraDobjProp = &summarizeExtraDobjExtinguish
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjExtinguish;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjExtinguish
+	whenSummarizedDobjProp = &whenSummarizedDobjExtinguish;
 modify DetachAction
 	summarizeDobjProp = &summarizeDobjDetach
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDetach
 	summarizeExtraDobjProp = &summarizeExtraDobjDetach
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDetach;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDetach
+	whenSummarizedDobjProp = &whenSummarizedDobjDetach;
 modify LookInAction
 	summarizeDobjProp = &summarizeDobjLookIn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLookIn
 	summarizeExtraDobjProp = &summarizeExtraDobjLookIn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookIn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookIn
+	whenSummarizedDobjProp = &whenSummarizedDobjLookIn;
 modify GiveToAction
 	summarizeDobjProp = &summarizeDobjGiveTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjGiveTo
 	summarizeExtraDobjProp = &summarizeExtraDobjGiveTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGiveTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGiveTo
+	whenSummarizedDobjProp = &whenSummarizedDobjGiveTo;
 modify TalkToAction
 	summarizeDobjProp = &summarizeDobjTalkTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTalkTo
 	summarizeExtraDobjProp = &summarizeExtraDobjTalkTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTalkTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTalkTo
+	whenSummarizedDobjProp = &whenSummarizedDobjTalkTo;
 modify PlugInAction
 	summarizeDobjProp = &summarizeDobjPlugIn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPlugIn
 	summarizeExtraDobjProp = &summarizeExtraDobjPlugIn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPlugIn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPlugIn
+	whenSummarizedDobjProp = &whenSummarizedDobjPlugIn;
 modify SearchAction
 	summarizeDobjProp = &summarizeDobjSearch
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSearch
 	summarizeExtraDobjProp = &summarizeExtraDobjSearch
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSearch;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSearch
+	whenSummarizedDobjProp = &whenSummarizedDobjSearch;
 modify PushInAction
 	summarizeDobjProp = &summarizeDobjPushIn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushIn
 	summarizeExtraDobjProp = &summarizeExtraDobjPushIn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushIn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushIn
+	whenSummarizedDobjProp = &whenSummarizedDobjPushIn;
 modify AttackAction
 	summarizeDobjProp = &summarizeDobjAttack
 	summarizeImplicitDobjProp = &summarizeImplicitDobjAttack
 	summarizeExtraDobjProp = &summarizeExtraDobjAttack
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjAttack;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjAttack
+	whenSummarizedDobjProp = &whenSummarizedDobjAttack;
 modify GetOutAction
 	summarizeDobjProp = &summarizeDobjGetOut
 	summarizeImplicitDobjProp = &summarizeImplicitDobjGetOut
 	summarizeExtraDobjProp = &summarizeExtraDobjGetOut
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGetOut;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGetOut
+	whenSummarizedDobjProp = &whenSummarizedDobjGetOut;
 modify MoveToAction
 	summarizeDobjProp = &summarizeDobjMoveTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjMoveTo
 	summarizeExtraDobjProp = &summarizeExtraDobjMoveTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjMoveTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjMoveTo
+	whenSummarizedDobjProp = &whenSummarizedDobjMoveTo;
 modify TypeOnAction
 	summarizeDobjProp = &summarizeDobjTypeOn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTypeOn
 	summarizeExtraDobjProp = &summarizeExtraDobjTypeOn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTypeOn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTypeOn
+	whenSummarizedDobjProp = &whenSummarizedDobjTypeOn;
 modify FastenAction
 	summarizeDobjProp = &summarizeDobjFasten
 	summarizeImplicitDobjProp = &summarizeImplicitDobjFasten
 	summarizeExtraDobjProp = &summarizeExtraDobjFasten
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFasten;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFasten
+	whenSummarizedDobjProp = &whenSummarizedDobjFasten;
 modify ShowToAction
 	summarizeDobjProp = &summarizeDobjShowTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjShowTo
 	summarizeExtraDobjProp = &summarizeExtraDobjShowTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjShowTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjShowTo
+	whenSummarizedDobjProp = &whenSummarizedDobjShowTo;
 modify PushUpAction
 	summarizeDobjProp = &summarizeDobjPushUp
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushUp
 	summarizeExtraDobjProp = &summarizeExtraDobjPushUp
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushUp;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushUp
+	whenSummarizedDobjProp = &whenSummarizedDobjPushUp;
 modify TurnOnAction
 	summarizeDobjProp = &summarizeDobjTurnOn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTurnOn
 	summarizeExtraDobjProp = &summarizeExtraDobjTurnOn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurnOn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurnOn
+	whenSummarizedDobjProp = &whenSummarizedDobjTurnOn;
 modify VagueTravelAction
 	summarizeDobjProp = &summarizeDobjVagueTravel
 	summarizeImplicitDobjProp = &summarizeImplicitDobjVagueTravel
 	summarizeExtraDobjProp = &summarizeExtraDobjVagueTravel
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjVagueTravel;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjVagueTravel
+	whenSummarizedDobjProp = &whenSummarizedDobjVagueTravel;
 modify UnlockAction
 	summarizeDobjProp = &summarizeDobjUnlock
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnlock
 	summarizeExtraDobjProp = &summarizeExtraDobjUnlock
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnlock;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnlock
+	whenSummarizedDobjProp = &whenSummarizedDobjUnlock;
 modify RemoveAction
 	summarizeDobjProp = &summarizeDobjRemove
 	summarizeImplicitDobjProp = &summarizeImplicitDobjRemove
 	summarizeExtraDobjProp = &summarizeExtraDobjRemove
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjRemove;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjRemove
+	whenSummarizedDobjProp = &whenSummarizedDobjRemove;
 modify TravelAction
 	summarizeDobjProp = &summarizeDobjTravel
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTravel
 	summarizeExtraDobjProp = &summarizeExtraDobjTravel
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTravel;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTravel
+	whenSummarizedDobjProp = &whenSummarizedDobjTravel;
 modify SwitchAction
 	summarizeDobjProp = &summarizeDobjSwitch
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSwitch
 	summarizeExtraDobjProp = &summarizeExtraDobjSwitch
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSwitch;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSwitch
+	whenSummarizedDobjProp = &whenSummarizedDobjSwitch;
 modify FollowAction
 	summarizeDobjProp = &summarizeDobjFollow
 	summarizeImplicitDobjProp = &summarizeImplicitDobjFollow
 	summarizeExtraDobjProp = &summarizeExtraDobjFollow
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFollow;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFollow
+	whenSummarizedDobjProp = &whenSummarizedDobjFollow;
 modify LookThroughAction
 	summarizeDobjProp = &summarizeDobjLookThrough
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLookThrough
 	summarizeExtraDobjProp = &summarizeExtraDobjLookThrough
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookThrough;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookThrough
+	whenSummarizedDobjProp = &whenSummarizedDobjLookThrough;
 modify UnplugAction
 	summarizeDobjProp = &summarizeDobjUnplug
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnplug
 	summarizeExtraDobjProp = &summarizeExtraDobjUnplug
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnplug;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnplug
+	whenSummarizedDobjProp = &whenSummarizedDobjUnplug;
 modify UnscrewWithAction
 	summarizeDobjProp = &summarizeDobjUnscrewWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnscrewWith
 	summarizeExtraDobjProp = &summarizeExtraDobjUnscrewWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnscrewWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnscrewWith
+	whenSummarizedDobjProp = &whenSummarizedDobjUnscrewWith;
 modify ClimbUpAction
 	summarizeDobjProp = &summarizeDobjClimbUp
 	summarizeImplicitDobjProp = &summarizeImplicitDobjClimbUp
 	summarizeExtraDobjProp = &summarizeExtraDobjClimbUp
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClimbUp;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClimbUp
+	whenSummarizedDobjProp = &whenSummarizedDobjClimbUp;
 modify DigWithAction
 	summarizeDobjProp = &summarizeDobjDigWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDigWith
 	summarizeExtraDobjProp = &summarizeExtraDobjDigWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDigWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDigWith
+	whenSummarizedDobjProp = &whenSummarizedDobjDigWith;
 modify PushTravelViaIobjAction
 	summarizeDobjProp = &summarizeDobjPushTravelViaIobj
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravelViaIobj
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravelViaIobj
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelViaIobj;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelViaIobj
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravelViaIobj;
 modify JumpOffAction
 	summarizeDobjProp = &summarizeDobjJumpOff
 	summarizeImplicitDobjProp = &summarizeImplicitDobjJumpOff
 	summarizeExtraDobjProp = &summarizeExtraDobjJumpOff
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJumpOff;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJumpOff
+	whenSummarizedDobjProp = &whenSummarizedDobjJumpOff;
 modify StandOnAction
 	summarizeDobjProp = &summarizeDobjStandOn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjStandOn
 	summarizeExtraDobjProp = &summarizeExtraDobjStandOn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStandOn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStandOn
+	whenSummarizedDobjProp = &whenSummarizedDobjStandOn;
 modify PushTravelClimbUpAction
 	summarizeDobjProp = &summarizeDobjPushTravelClimbUp
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravelClimbUp
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravelClimbUp
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelClimbUp;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelClimbUp
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravelClimbUp;
 modify PushAftAction
 	summarizeDobjProp = &summarizeDobjPushAft
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushAft
 	summarizeExtraDobjProp = &summarizeExtraDobjPushAft
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushAft;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushAft
+	whenSummarizedDobjProp = &whenSummarizedDobjPushAft;
 modify TurnOffAction
 	summarizeDobjProp = &summarizeDobjTurnOff
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTurnOff
 	summarizeExtraDobjProp = &summarizeExtraDobjTurnOff
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurnOff;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurnOff
+	whenSummarizedDobjProp = &whenSummarizedDobjTurnOff;
 modify ExamineAction
 	summarizeDobjProp = &summarizeDobjExamine
 	summarizeImplicitDobjProp = &summarizeImplicitDobjExamine
 	summarizeExtraDobjProp = &summarizeExtraDobjExamine
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjExamine;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjExamine
+	whenSummarizedDobjProp = &whenSummarizedDobjExamine;
 modify CutWithAction
 	summarizeDobjProp = &summarizeDobjCutWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjCutWith
 	summarizeExtraDobjProp = &summarizeExtraDobjCutWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjCutWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjCutWith
+	whenSummarizedDobjProp = &whenSummarizedDobjCutWith;
 modify GoodbyeAction
 	summarizeDobjProp = &summarizeDobjGoodbye
 	summarizeImplicitDobjProp = &summarizeImplicitDobjGoodbye
 	summarizeExtraDobjProp = &summarizeExtraDobjGoodbye
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGoodbye;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGoodbye
+	whenSummarizedDobjProp = &whenSummarizedDobjGoodbye;
 modify ThrowAtAction
 	summarizeDobjProp = &summarizeDobjThrowAt
 	summarizeImplicitDobjProp = &summarizeImplicitDobjThrowAt
 	summarizeExtraDobjProp = &summarizeExtraDobjThrowAt
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrowAt;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrowAt
+	whenSummarizedDobjProp = &whenSummarizedDobjThrowAt;
 modify NoteDarknessAction
 	summarizeDobjProp = &summarizeDobjNoteDarkness
 	summarizeImplicitDobjProp = &summarizeImplicitDobjNoteDarkness
 	summarizeExtraDobjProp = &summarizeExtraDobjNoteDarkness
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNoteDarkness;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjNoteDarkness
+	whenSummarizedDobjProp = &whenSummarizedDobjNoteDarkness;
 modify ThrowToAction
 	summarizeDobjProp = &summarizeDobjThrowTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjThrowTo
 	summarizeExtraDobjProp = &summarizeExtraDobjThrowTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrowTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrowTo
+	whenSummarizedDobjProp = &whenSummarizedDobjThrowTo;
 modify UnfastenFromAction
 	summarizeDobjProp = &summarizeDobjUnfastenFrom
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnfastenFrom
 	summarizeExtraDobjProp = &summarizeExtraDobjUnfastenFrom
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnfastenFrom;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnfastenFrom
+	whenSummarizedDobjProp = &whenSummarizedDobjUnfastenFrom;
 modify PushOutAction
 	summarizeDobjProp = &summarizeDobjPushOut
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushOut
 	summarizeExtraDobjProp = &summarizeExtraDobjPushOut
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushOut;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushOut
+	whenSummarizedDobjProp = &whenSummarizedDobjPushOut;
 modify UnscrewAction
 	summarizeDobjProp = &summarizeDobjUnscrew
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnscrew
 	summarizeExtraDobjProp = &summarizeExtraDobjUnscrew
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnscrew;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnscrew
+	whenSummarizedDobjProp = &whenSummarizedDobjUnscrew;
 modify ConsultAction
 	summarizeDobjProp = &summarizeDobjConsult
 	summarizeImplicitDobjProp = &summarizeImplicitDobjConsult
 	summarizeExtraDobjProp = &summarizeExtraDobjConsult
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjConsult;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjConsult
+	whenSummarizedDobjProp = &whenSummarizedDobjConsult;
 modify PushTravelThroughAction
 	summarizeDobjProp = &summarizeDobjPushTravelThrough
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravelThrough
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravelThrough
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelThrough;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelThrough
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravelThrough;
 modify GetOffOfAction
 	summarizeDobjProp = &summarizeDobjGetOffOf
 	summarizeImplicitDobjProp = &summarizeImplicitDobjGetOffOf
 	summarizeExtraDobjProp = &summarizeExtraDobjGetOffOf
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGetOffOf;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGetOffOf
+	whenSummarizedDobjProp = &whenSummarizedDobjGetOffOf;
 modify JumpOffIAction
 	summarizeDobjProp = &summarizeDobjJumpOffI
 	summarizeImplicitDobjProp = &summarizeImplicitDobjJumpOffI
 	summarizeExtraDobjProp = &summarizeExtraDobjJumpOffI
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJumpOffI;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJumpOffI
+	whenSummarizedDobjProp = &whenSummarizedDobjJumpOffI;
 modify GetOutOfAction
 	summarizeDobjProp = &summarizeDobjGetOutOf
 	summarizeImplicitDobjProp = &summarizeImplicitDobjGetOutOf
 	summarizeExtraDobjProp = &summarizeExtraDobjGetOutOf
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGetOutOf;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGetOutOf
+	whenSummarizedDobjProp = &whenSummarizedDobjGetOutOf;
 modify AttachToAction
 	summarizeDobjProp = &summarizeDobjAttachTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjAttachTo
 	summarizeExtraDobjProp = &summarizeExtraDobjAttachTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjAttachTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjAttachTo
+	whenSummarizedDobjProp = &whenSummarizedDobjAttachTo;
 modify TakeFromAction
 	summarizeDobjProp = &summarizeDobjTakeFrom
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTakeFrom
 	summarizeExtraDobjProp = &summarizeExtraDobjTakeFrom
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTakeFrom;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTakeFrom
+	whenSummarizedDobjProp = &whenSummarizedDobjTakeFrom;
 modify PushTravelGetOutOfAction
 	summarizeDobjProp = &summarizeDobjPushTravelGetOutOf
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravelGetOutOf
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravelGetOutOf
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelGetOutOf;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelGetOutOf
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravelGetOutOf;
 modify FastenToAction
 	summarizeDobjProp = &summarizeDobjFastenTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjFastenTo
 	summarizeExtraDobjProp = &summarizeExtraDobjFastenTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFastenTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFastenTo
+	whenSummarizedDobjProp = &whenSummarizedDobjFastenTo;
 modify LockWithAction
 	summarizeDobjProp = &summarizeDobjLockWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLockWith
 	summarizeExtraDobjProp = &summarizeExtraDobjLockWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLockWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLockWith
+	whenSummarizedDobjProp = &whenSummarizedDobjLockWith;
 modify PushForeAction
 	summarizeDobjProp = &summarizeDobjPushFore
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushFore
 	summarizeExtraDobjProp = &summarizeExtraDobjPushFore
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushFore;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushFore
+	whenSummarizedDobjProp = &whenSummarizedDobjPushFore;
 modify PushTravelDirAction
 	summarizeDobjProp = &summarizeDobjPushTravelDir
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravelDir
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravelDir
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelDir;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelDir
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravelDir;
 modify PushEastAction
 	summarizeDobjProp = &summarizeDobjPushEast
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushEast
 	summarizeExtraDobjProp = &summarizeExtraDobjPushEast
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushEast;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushEast
+	whenSummarizedDobjProp = &whenSummarizedDobjPushEast;
 modify ListenToAction
 	summarizeDobjProp = &summarizeDobjListenTo
 	summarizeImplicitDobjProp = &summarizeImplicitDobjListenTo
 	summarizeExtraDobjProp = &summarizeExtraDobjListenTo
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjListenTo;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjListenTo
+	whenSummarizedDobjProp = &whenSummarizedDobjListenTo;
 modify PlugIntoAction
 	summarizeDobjProp = &summarizeDobjPlugInto
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPlugInto
 	summarizeExtraDobjProp = &summarizeExtraDobjPlugInto
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPlugInto;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPlugInto
+	whenSummarizedDobjProp = &whenSummarizedDobjPlugInto;
 modify ThrowDirAction
 	summarizeDobjProp = &summarizeDobjThrowDir
 	summarizeImplicitDobjProp = &summarizeImplicitDobjThrowDir
 	summarizeExtraDobjProp = &summarizeExtraDobjThrowDir
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrowDir;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjThrowDir
+	whenSummarizedDobjProp = &whenSummarizedDobjThrowDir;
 modify MoveWithAction
 	summarizeDobjProp = &summarizeDobjMoveWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjMoveWith
 	summarizeExtraDobjProp = &summarizeExtraDobjMoveWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjMoveWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjMoveWith
+	whenSummarizedDobjProp = &whenSummarizedDobjMoveWith;
 modify BurnWithAction
 	summarizeDobjProp = &summarizeDobjBurnWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjBurnWith
 	summarizeExtraDobjProp = &summarizeExtraDobjBurnWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBurnWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBurnWith
+	whenSummarizedDobjProp = &whenSummarizedDobjBurnWith;
 modify PutUnderAction
 	summarizeDobjProp = &summarizeDobjPutUnder
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPutUnder
 	summarizeExtraDobjProp = &summarizeExtraDobjPutUnder
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutUnder;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutUnder
+	whenSummarizedDobjProp = &whenSummarizedDobjPutUnder;
 modify SmellImplicitAction
 	summarizeDobjProp = &summarizeDobjSmellImplicit
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSmellImplicit
 	summarizeExtraDobjProp = &summarizeExtraDobjSmellImplicit
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSmellImplicit;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSmellImplicit
+	whenSummarizedDobjProp = &whenSummarizedDobjSmellImplicit;
 modify JumpOverAction
 	summarizeDobjProp = &summarizeDobjJumpOver
 	summarizeImplicitDobjProp = &summarizeImplicitDobjJumpOver
 	summarizeExtraDobjProp = &summarizeExtraDobjJumpOver
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJumpOver;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJumpOver
+	whenSummarizedDobjProp = &whenSummarizedDobjJumpOver;
 modify PushDownAction
 	summarizeDobjProp = &summarizeDobjPushDown
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushDown
 	summarizeExtraDobjProp = &summarizeExtraDobjPushDown
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushDown;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushDown
+	whenSummarizedDobjProp = &whenSummarizedDobjPushDown;
 modify SenseImplicitAction
 	summarizeDobjProp = &summarizeDobjSenseImplicit
 	summarizeImplicitDobjProp = &summarizeImplicitDobjSenseImplicit
 	summarizeExtraDobjProp = &summarizeExtraDobjSenseImplicit
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSenseImplicit;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjSenseImplicit
+	whenSummarizedDobjProp = &whenSummarizedDobjSenseImplicit;
 modify PourIntoAction
 	summarizeDobjProp = &summarizeDobjPourInto
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPourInto
 	summarizeExtraDobjProp = &summarizeExtraDobjPourInto
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPourInto;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPourInto
+	whenSummarizedDobjProp = &whenSummarizedDobjPourInto;
 modify PushStarboardAction
 	summarizeDobjProp = &summarizeDobjPushStarboard
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushStarboard
 	summarizeExtraDobjProp = &summarizeExtraDobjPushStarboard
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushStarboard;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushStarboard
+	whenSummarizedDobjProp = &whenSummarizedDobjPushStarboard;
 modify PushWestAction
 	summarizeDobjProp = &summarizeDobjPushWest
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushWest
 	summarizeExtraDobjProp = &summarizeExtraDobjPushWest
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushWest;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushWest
+	whenSummarizedDobjProp = &whenSummarizedDobjPushWest;
 modify UnfastenAction
 	summarizeDobjProp = &summarizeDobjUnfasten
 	summarizeImplicitDobjProp = &summarizeImplicitDobjUnfasten
 	summarizeExtraDobjProp = &summarizeExtraDobjUnfasten
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnfasten;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjUnfasten
+	whenSummarizedDobjProp = &whenSummarizedDobjUnfasten;
 modify TurnWithAction
 	summarizeDobjProp = &summarizeDobjTurnWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTurnWith
 	summarizeExtraDobjProp = &summarizeExtraDobjTurnWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurnWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTurnWith
+	whenSummarizedDobjProp = &whenSummarizedDobjTurnWith;
 modify PushPortAction
 	summarizeDobjProp = &summarizeDobjPushPort
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushPort
 	summarizeExtraDobjProp = &summarizeExtraDobjPushPort
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushPort;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushPort
+	whenSummarizedDobjProp = &whenSummarizedDobjPushPort;
 modify PourOntoAction
 	summarizeDobjProp = &summarizeDobjPourOnto
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPourOnto
 	summarizeExtraDobjProp = &summarizeExtraDobjPourOnto
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPourOnto;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPourOnto
+	whenSummarizedDobjProp = &whenSummarizedDobjPourOnto;
 modify InventoryWideAction
 	summarizeDobjProp = &summarizeDobjInventoryWide
 	summarizeImplicitDobjProp = &summarizeImplicitDobjInventoryWide
 	summarizeExtraDobjProp = &summarizeExtraDobjInventoryWide
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjInventoryWide;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjInventoryWide
+	whenSummarizedDobjProp = &whenSummarizedDobjInventoryWide;
 modify PushNortheastAction
 	summarizeDobjProp = &summarizeDobjPushNortheast
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushNortheast
 	summarizeExtraDobjProp = &summarizeExtraDobjPushNortheast
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushNortheast;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushNortheast
+	whenSummarizedDobjProp = &whenSummarizedDobjPushNortheast;
 modify InventoryTallAction
 	summarizeDobjProp = &summarizeDobjInventoryTall
 	summarizeImplicitDobjProp = &summarizeImplicitDobjInventoryTall
 	summarizeExtraDobjProp = &summarizeExtraDobjInventoryTall
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjInventoryTall;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjInventoryTall
+	whenSummarizedDobjProp = &whenSummarizedDobjInventoryTall;
 modify PushSoutheastAction
 	summarizeDobjProp = &summarizeDobjPushSoutheast
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushSoutheast
 	summarizeExtraDobjProp = &summarizeExtraDobjPushSoutheast
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushSoutheast;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushSoutheast
+	whenSummarizedDobjProp = &whenSummarizedDobjPushSoutheast;
 modify PushNorthwestAction
 	summarizeDobjProp = &summarizeDobjPushNorthwest
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushNorthwest
 	summarizeExtraDobjProp = &summarizeExtraDobjPushNorthwest
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushNorthwest;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushNorthwest
+	whenSummarizedDobjProp = &whenSummarizedDobjPushNorthwest;
 modify PushSouthwestAction
 	summarizeDobjProp = &summarizeDobjPushSouthwest
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushSouthwest
 	summarizeExtraDobjProp = &summarizeExtraDobjPushSouthwest
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushSouthwest;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushSouthwest
+	whenSummarizedDobjProp = &whenSummarizedDobjPushSouthwest;
 modify ReadAction
 	summarizeDobjProp = &summarizeDobjRead
 	summarizeImplicitDobjProp = &summarizeImplicitDobjRead
 	summarizeExtraDobjProp = &summarizeExtraDobjRead
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjRead;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjRead
+	whenSummarizedDobjProp = &whenSummarizedDobjRead;
 modify FeelAction
 	summarizeDobjProp = &summarizeDobjFeel
 	summarizeImplicitDobjProp = &summarizeImplicitDobjFeel
 	summarizeExtraDobjProp = &summarizeExtraDobjFeel
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFeel;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFeel
+	whenSummarizedDobjProp = &whenSummarizedDobjFeel;
 modify DoffAction
 	summarizeDobjProp = &summarizeDobjDoff
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDoff
 	summarizeExtraDobjProp = &summarizeExtraDobjDoff
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDoff;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDoff
+	whenSummarizedDobjProp = &whenSummarizedDobjDoff;
 modify ClimbDownAction
 	summarizeDobjProp = &summarizeDobjClimbDown
 	summarizeImplicitDobjProp = &summarizeImplicitDobjClimbDown
 	summarizeExtraDobjProp = &summarizeExtraDobjClimbDown
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClimbDown;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjClimbDown
+	whenSummarizedDobjProp = &whenSummarizedDobjClimbDown;
 modify CleanWithAction
 	summarizeDobjProp = &summarizeDobjCleanWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjCleanWith
 	summarizeExtraDobjProp = &summarizeExtraDobjCleanWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjCleanWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjCleanWith
+	whenSummarizedDobjProp = &whenSummarizedDobjCleanWith;
 modify PutBehindAction
 	summarizeDobjProp = &summarizeDobjPutBehind
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPutBehind
 	summarizeExtraDobjProp = &summarizeExtraDobjPutBehind
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutBehind;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPutBehind
+	whenSummarizedDobjProp = &whenSummarizedDobjPutBehind;
 modify TakeAction
 	summarizeDobjProp = &summarizeDobjTake
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTake
 	summarizeExtraDobjProp = &summarizeExtraDobjTake
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTake;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTake
+	whenSummarizedDobjProp = &whenSummarizedDobjTake;
 modify LockAction
 	summarizeDobjProp = &summarizeDobjLock
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLock
 	summarizeExtraDobjProp = &summarizeExtraDobjLock
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLock;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLock
+	whenSummarizedDobjProp = &whenSummarizedDobjLock;
 modify FlipAction
 	summarizeDobjProp = &summarizeDobjFlip
 	summarizeImplicitDobjProp = &summarizeImplicitDobjFlip
 	summarizeExtraDobjProp = &summarizeExtraDobjFlip
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFlip;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFlip
+	whenSummarizedDobjProp = &whenSummarizedDobjFlip;
 modify ForeAction
 	summarizeDobjProp = &summarizeDobjFore
 	summarizeImplicitDobjProp = &summarizeImplicitDobjFore
 	summarizeExtraDobjProp = &summarizeExtraDobjFore
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFore;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjFore
+	whenSummarizedDobjProp = &whenSummarizedDobjFore;
 modify TravelDirAction
 	summarizeDobjProp = &summarizeDobjTravelDir
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTravelDir
 	summarizeExtraDobjProp = &summarizeExtraDobjTravelDir
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTravelDir;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTravelDir
+	whenSummarizedDobjProp = &whenSummarizedDobjTravelDir;
 modify EastAction
 	summarizeDobjProp = &summarizeDobjEast
 	summarizeImplicitDobjProp = &summarizeImplicitDobjEast
 	summarizeExtraDobjProp = &summarizeExtraDobjEast
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjEast;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjEast
+	whenSummarizedDobjProp = &whenSummarizedDobjEast;
 modify PushTravelClimbDownAction
 	summarizeDobjProp = &summarizeDobjPushTravelClimbDown
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPushTravelClimbDown
 	summarizeExtraDobjProp = &summarizeExtraDobjPushTravelClimbDown
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelClimbDown;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPushTravelClimbDown
+	whenSummarizedDobjProp = &whenSummarizedDobjPushTravelClimbDown;
 modify TravelViaAction
 	summarizeDobjProp = &summarizeDobjTravelVia
 	summarizeImplicitDobjProp = &summarizeImplicitDobjTravelVia
 	summarizeExtraDobjProp = &summarizeExtraDobjTravelVia
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTravelVia;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjTravelVia
+	whenSummarizedDobjProp = &whenSummarizedDobjTravelVia;
 modify WearAction
 	summarizeDobjProp = &summarizeDobjWear
 	summarizeImplicitDobjProp = &summarizeImplicitDobjWear
 	summarizeExtraDobjProp = &summarizeExtraDobjWear
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjWear;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjWear
+	whenSummarizedDobjProp = &whenSummarizedDobjWear;
 modify OpenAction
 	summarizeDobjProp = &summarizeDobjOpen
 	summarizeImplicitDobjProp = &summarizeImplicitDobjOpen
 	summarizeExtraDobjProp = &summarizeExtraDobjOpen
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjOpen;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjOpen
+	whenSummarizedDobjProp = &whenSummarizedDobjOpen;
 modify LookUnderAction
 	summarizeDobjProp = &summarizeDobjLookUnder
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLookUnder
 	summarizeExtraDobjProp = &summarizeExtraDobjLookUnder
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookUnder;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookUnder
+	whenSummarizedDobjProp = &whenSummarizedDobjLookUnder;
 modify WaitAction
 	summarizeDobjProp = &summarizeDobjWait
 	summarizeImplicitDobjProp = &summarizeImplicitDobjWait
 	summarizeExtraDobjProp = &summarizeExtraDobjWait
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjWait;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjWait
+	whenSummarizedDobjProp = &whenSummarizedDobjWait;
 modify LookAction
 	summarizeDobjProp = &summarizeDobjLook
 	summarizeImplicitDobjProp = &summarizeImplicitDobjLook
 	summarizeExtraDobjProp = &summarizeExtraDobjLook
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLook;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLook
+	whenSummarizedDobjProp = &whenSummarizedDobjLook;
 modify DropAction
 	summarizeDobjProp = &summarizeDobjDrop
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDrop
 	summarizeExtraDobjProp = &summarizeExtraDobjDrop
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDrop;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDrop
+	whenSummarizedDobjProp = &whenSummarizedDobjDrop;
 modify YellAction
 	summarizeDobjProp = &summarizeDobjYell
 	summarizeImplicitDobjProp = &summarizeImplicitDobjYell
 	summarizeExtraDobjProp = &summarizeExtraDobjYell
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjYell;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjYell
+	whenSummarizedDobjProp = &whenSummarizedDobjYell;
 modify MoveAction
 	summarizeDobjProp = &summarizeDobjMove
 	summarizeImplicitDobjProp = &summarizeImplicitDobjMove
 	summarizeExtraDobjProp = &summarizeExtraDobjMove
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjMove;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjMove
+	whenSummarizedDobjProp = &whenSummarizedDobjMove;
 modify BurnAction
 	summarizeDobjProp = &summarizeDobjBurn
 	summarizeImplicitDobjProp = &summarizeImplicitDobjBurn
 	summarizeExtraDobjProp = &summarizeExtraDobjBurn
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBurn;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjBurn
+	whenSummarizedDobjProp = &whenSummarizedDobjBurn;
 modify GoThroughAction
 	summarizeDobjProp = &summarizeDobjGoThrough
 	summarizeImplicitDobjProp = &summarizeImplicitDobjGoThrough
 	summarizeExtraDobjProp = &summarizeExtraDobjGoThrough
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGoThrough;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjGoThrough
+	whenSummarizedDobjProp = &whenSummarizedDobjGoThrough;
 modify DownAction
 	summarizeDobjProp = &summarizeDobjDown
 	summarizeImplicitDobjProp = &summarizeImplicitDobjDown
 	summarizeExtraDobjProp = &summarizeExtraDobjDown
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDown;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjDown
+	whenSummarizedDobjProp = &whenSummarizedDobjDown;
 modify KissAction
 	summarizeDobjProp = &summarizeDobjKiss
 	summarizeImplicitDobjProp = &summarizeImplicitDobjKiss
 	summarizeExtraDobjProp = &summarizeExtraDobjKiss
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjKiss;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjKiss
+	whenSummarizedDobjProp = &whenSummarizedDobjKiss;
 modify JumpAction
 	summarizeDobjProp = &summarizeDobjJump
 	summarizeImplicitDobjProp = &summarizeImplicitDobjJump
 	summarizeExtraDobjProp = &summarizeExtraDobjJump
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJump;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjJump
+	whenSummarizedDobjProp = &whenSummarizedDobjJump;
 modify PullAction
 	summarizeDobjProp = &summarizeDobjPull
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPull
 	summarizeExtraDobjProp = &summarizeExtraDobjPull
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPull;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPull
+	whenSummarizedDobjProp = &whenSummarizedDobjPull;
 modify PushAction
 	summarizeDobjProp = &summarizeDobjPush
 	summarizeImplicitDobjProp = &summarizeImplicitDobjPush
 	summarizeExtraDobjProp = &summarizeExtraDobjPush
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPush;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjPush
+	whenSummarizedDobjProp = &whenSummarizedDobjPush;
 modify ScrewWithAction
 	summarizeDobjProp = &summarizeDobjScrewWith
 	summarizeImplicitDobjProp = &summarizeImplicitDobjScrewWith
 	summarizeExtraDobjProp = &summarizeExtraDobjScrewWith
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjScrewWith;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjScrewWith
+	whenSummarizedDobjProp = &whenSummarizedDobjScrewWith;
 modify EventAction
 	summarizeDobjProp = &summarizeDobjEvent
 	summarizeImplicitDobjProp = &summarizeImplicitDobjEvent
 	summarizeExtraDobjProp = &summarizeExtraDobjEvent
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjEvent;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjEvent
+	whenSummarizedDobjProp = &whenSummarizedDobjEvent;
 modify CommandActorAction
 	summarizeDobjProp = &summarizeDobjCommandActor
 	summarizeImplicitDobjProp = &summarizeImplicitDobjCommandActor
 	summarizeExtraDobjProp = &summarizeExtraDobjCommandActor
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjCommandActor;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjCommandActor
+	whenSummarizedDobjProp = &whenSummarizedDobjCommandActor;
 modify StrikeAction
 	summarizeDobjProp = &summarizeDobjStrike
 	summarizeImplicitDobjProp = &summarizeImplicitDobjStrike
 	summarizeExtraDobjProp = &summarizeExtraDobjStrike
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStrike;
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjStrike
+	whenSummarizedDobjProp = &whenSummarizedDobjStrike;

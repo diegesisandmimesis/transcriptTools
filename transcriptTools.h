@@ -42,6 +42,7 @@
 	summarizeImplicitDobjProp = &summarizeImplicitDobj##name \
 	summarizeExtraDobjProp = &summarizeExtraDobj##name \
 	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobj##name \
+	whenSummarizedDobjProp = &whenSummarizedDobj##name \
 
 #undef DefineTIActionSub
 #define DefineTIActionSub(name, cls) \
@@ -59,7 +60,8 @@
 	summarizeDobjProp = &summarizeDobj##name \
 	summarizeImplicitDobjProp = &summarizeImplicitDobj##name \
 	summarizeExtraDobjProp = &summarizeExtraDobj##name \
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobj##name
+	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobj##name \
+	whenSummarizedDobjProp = &whenSummarizedDobj##name
 
 ReportSummary template @action;
 

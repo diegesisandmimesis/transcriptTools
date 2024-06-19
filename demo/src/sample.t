@@ -102,37 +102,24 @@ class TakeToggle: Thing
 ;
 
 class AlarmItem: Thing
-	alarmMsg(dobjPhrase) {
-		return('As {you/he} pick{s} up the <<dobjPhrase>>, an alarm
-			sounds in the distance. ');
-	}
 	dobjFor(Take) {
 		action() {
 			inherited();
-			//gNoSummary();
-/*
-			mainReport('As {you/he} pick{s} up {a dobj/him},
-				an alarm sounds in the distance. ');
-*/
-			mainReport(alarmMsg(name));
+			// The normal action report.
+			mainReport('As {you/he} pick{s} up {a dobj/him}, an
+				alarm sounds in the distance. ');
 		}
 
-		summarize(data) {
-/*
-			return('As {you/he} pick{s} up the <<data.listDobjs()>>,
-				an alarm sounds in the distance. ');
-*/
-			return(alarmMsg(data.listDobjs()));
-		}
-
-		summarizeImplicit(data) {
-/*
+		// This method will be called whenever one of our >TAKE
+		// action reports is summarized away.
+		whenSummarized(data) {
+			// We add an special kind of extra report that's
+			// only used for important information removed by
+			// summaries.  This will get stuck into the
+			// report group the >TAKE action is in.
 			extraSummaryReport(data, 'As {you/he} pick{s} up
-			the <<data.listDobjs()>>, an alarm sounds in the
-				distance. ');
-*/
-			extraSummaryReport(data, alarmMsg(data.listDobjs()));
-			return(inherited(data));
+				<<data.listDobjSubset(Stone)>>, an alarm
+				sounds in the distance. ');
 		}
 	}
 ;
@@ -272,13 +259,10 @@ roomThreeB: Room 'Room 3B'
 	east = roomThreeB2
 	south = roomThreeC
 ;
-+Sign "If you try <<inlineCommand('put all in box')>> there should be
-	<b>no</b> summarizing of the action.  For both stone there should
-	be an implicit action announcement (for taking the stone), an
-	action report for the implicit <<inlineCommand('take')>> command,
-	and then an action report for putting the stone in the box (just
-	<q>Done.</q>).  There will also be a single implicit action
-	announcement for opening the box, before the first <q>Done.</q> ";
++Sign "If you try <<inlineCommand('put all in box')>> you should get:
+	an implicit action line describing taking the stones and opening
+	the box; an extra action report describing an alarm going off;
+	and the action report for putting the stones in the box. ";
 +Stone;
 +Stone;
 +Box;

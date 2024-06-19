@@ -154,6 +154,9 @@ modify transcriptTools
 		buf.append('\n\tsummarizeAnnouncementDobjProp = ');
 		buf.append('&summarizeAnnouncementDobj');
 		buf.append(n0);
+		buf.append('\n\twhenSummarizedDobjProp = ');
+		buf.append('&whenSummarizedDobj');
+		buf.append(n0);
 		buf.append(';\n');
 	}
 ;

@@ -42,3 +42,18 @@ class CleanupOrphanedAnnouncements: TranscriptCleanup
 		});
 	}
 ;
+
+// Remove identical ExtraSummaryReports
+class CleanupExtraSummaryReports: TranscriptCleanup
+	postprocess(t, vec) {
+		local i, j, l;
+
+		l = vec.subset({ x: x.ofKind(ExtraSummaryReport) });
+		for(i = 1; i <= l.length; i++) {
+			for(j = i + 1; j <= l.length; j++) {
+				if(l[i].messageText_ == l[j].messageText_)
+					t.removeReport(l[j]);
+			}
+		}
+	}
+;

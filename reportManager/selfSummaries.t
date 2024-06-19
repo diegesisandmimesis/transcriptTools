@@ -68,6 +68,7 @@ class SelfSummary: ReportSummary
 class SelfSummaryImplicit: SelfSummary, ImplicitSummary
 	summaryProp = &summarizeImplicitDobjProp
 	reportTypes = ImplicitActionAnnouncement
+	getMinSummaryLength() { return(1); }
 ;
 
 class SelfSummaryExtra: SelfSummary
