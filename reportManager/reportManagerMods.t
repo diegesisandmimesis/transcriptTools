@@ -12,6 +12,8 @@ modify CommandReport
 	dobjList_ = nil
 	iobjList_ = nil
 
+	transcript_ = nil
+
 	addDobj(obj) {
 		if(obj == nil)
 			return(nil);

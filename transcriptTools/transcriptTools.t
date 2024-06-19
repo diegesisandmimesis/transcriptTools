@@ -179,4 +179,22 @@ transcriptTools: TranscriptToolsWidget
 		}
 		_transcriptTools.forEach({ x: (fn)(x) });
 	}
+
+	_extraSummaryReport(data, txt) {
+		local idx, l, t;
+
+		if((t = data.transcript_) == nil)
+			return;
+
+		l = t.reports_.subset({ x: x.iter_ == data.iter_ });
+		if(l.length < 1)
+			return;
+
+		idx = t.reports_.indexOf(l[l.length]);
+		t.reports_.insertAt(idx, new CommandSepAnnouncement());
+		idx += 1;
+		t.reports_.insertAt(idx, new AfterCommandReport(txt));
+		idx += 1;
+		t.reports_.insertAt(idx, new CommandSepAnnouncement());
+	}
 ;

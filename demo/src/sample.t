@@ -31,11 +31,9 @@ function inlineCommand(cmd) {
 flowerReportManager: ReportManager reportManagerFor = Flower;
 +ReportSummary @ExamineAction
 	summarize(data) {
-aioSay('\nsummarize\n ');
 		return('It\'s <<data.listDobjs()>>. ');
 	}
 	summarizeAnnouncement(r) {
-aioSay('\nsummarizeAnnouncement\n ');
 		return(inherited(r));
 	}
 ;
@@ -108,17 +106,28 @@ class AlarmItem: Thing
 		action() {
 			inherited();
 			//gNoSummary();
-			mainReport('As you pick up {a dobj/him}, an alarm
-				sounds in the distance. ');
+			mainReport('As {you/he} pick{s} up {a dobj/him},
+				an alarm sounds in the distance. ');
 		}
 		summarize(data) {
-			return('As you pick up the <<data.listDobjs()>>, an
-				alarm sounds in the distance. ');
+			return('As {you/he} pick{s} up the <<data.listDobjs()>>,
+				an alarm sounds in the distance. ');
 		}
 		summarizeImplicit(data) {
-aioSay('\nimplicit\n ');
-			return('As you pick up the <<data.listDobjs()>>, an
-				alarm sounds in the distance. ');
+/*
+			local idx, t;
+
+			t = data.transcript_;
+			t.forEachReportIter(function(o) {
+				if(o[1].iter_ != data.iter_)
+					return;
+				idx = t.reports_.indexOf(o[o.length]);
+				t.reports_.insertAt(idx, new AfterCommandReport('An alarm sounds. '));
+			});
+*/
+			extraSummaryReport(data, 'An alarm sounds. ');
+			//extraReport('An alarm sounds. ');
+			return('{you/he} take{s} the <<data.listDobjs()>>');
 		}
 	}
 ;

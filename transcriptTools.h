@@ -63,6 +63,9 @@
 
 ReportSummary template @action;
 
+#define extraSummaryReport(d, txt) \
+	(transcriptTools._extraSummaryReport(d, txt))
+
 #ifdef __DEBUG
 TTICommand template 'id' 'help'? "longHelp"?;
 #endif // __DEBUG

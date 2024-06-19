@@ -209,6 +209,8 @@ class ReportSummary: TranscriptToolsWidget
 				t.removeReport(lst[i]);
 		}
 
+		r.transcript_ = t;
+
 		// Call the summarizer method for this kind of report,
 		// as defined in the _reportClass table.  If the summarizer
 		// method returns nil, bail.
