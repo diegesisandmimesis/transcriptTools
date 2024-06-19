@@ -61,6 +61,10 @@ class ReportSummary: TranscriptToolsWidget
 		ExtraCommandReport -> &_summarizeExtra
 	]
 
+	_groupTogether = static [
+		MainCommandReport -> DefaultCommandReport
+	]
+
 	// Preinit method.  Add ourselves to our report manager.
 	initializeReportSummary() {
 		if(location == nil)
@@ -187,7 +191,7 @@ class ReportSummary: TranscriptToolsWidget
 	// default reports with default reports, main reports with main
 	// reports, and so on.
 	_sortForMerging(lst) {
-		local k, i, v;
+		local i, j, k, v;
 
 		k = _reportClasses.keysToList();
 
@@ -201,8 +205,13 @@ class ReportSummary: TranscriptToolsWidget
 		// _MergeData instance.
 		lst.forEach(function(o) {
 			for(i = 1; i <= k.length; i++) {
-				if(o.ofKind(k[i]))
-					v[i].vec.append(o);
+				if(o.ofKind(k[i])) {
+					if(_groupTogether[k[i]])
+						j = k.indexOf(_groupTogether[k[i]]);
+					else
+						j = i;
+					v[j].vec.append(o);
+				}
 			}
 		});
 
