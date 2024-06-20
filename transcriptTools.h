@@ -11,6 +11,7 @@
 #error "syslog should be in /home/user/tads/syslog ."
 #endif // SYSLOG_H
 
+/*
 #ifdef __DEBUG
 #include "bufferedOutputFilter.h"
 #ifndef BUFFERED_OUTPUT_FILTER_H
@@ -21,6 +22,7 @@
 #error "bufferedOutputFilter should be in /home/user/tads/bufferedOutputFilter ."
 #endif // BUFFERED_OUTPUT_FILTER_H
 #endif // __DEBUG
+*/
 
 #define gIsReport(r) (((r != nil) && r.ofKind(CommandReport)) ? true : nil)
 #define gReportObject(r) (gIsReport(r) ? r.dobj_ : nil)

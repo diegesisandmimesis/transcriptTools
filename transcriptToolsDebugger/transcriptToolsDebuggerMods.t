@@ -57,6 +57,8 @@ modify CommandTranscript
 	}
 ;
 
+#ifdef BUFFERED_OUTPUT_FILTER_H
+
 modify transcriptToolsPreinit
 	execute() {
 		inherited();
@@ -68,5 +70,7 @@ modify transcriptToolsPreinit
 modify quoteOutputFilter
 	lineBufferWidth = 50
 ;
+
+#endif // BUFFERED_OUTPUT_FILTER_H
 
 #endif // __DEBUG

@@ -125,8 +125,12 @@ VerbRule(TTDPost)
 DefineSystemAction(TranscriptToolsDebuggerHelp)
 	_cmd(v) { return('<b>&gt;<<toString(v).toUpper()>></b>'); }
 	_listCmd(cmd, usage) {
-			"\n\t<<_cmd(cmd)>>";
+		"\n\t<<_cmd(cmd)>>";
+#ifdef BUFFERED_OUTPUT_FILTER_H
 		usage = '<QUOTE>' + usage + '</QUOTE>';
+#else
+		usage = '\n\t' + usage + '<.p>\n';
+#endif // BUFFERED_OUTPUT_FILTER_H
 		"<<usage>> ";
 	}
 	execSystemAction() {
