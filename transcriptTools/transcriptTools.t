@@ -195,7 +195,9 @@ transcriptTools: TranscriptToolsWidget
 		if(l.length < 1)
 			return;
 
-		idx = t.reports_.indexOf(l[1]);
+		if((idx = t.reports_.indexOf(l[1])) == nil)
+			return;
+
 		t.insertReportAt(idx, new ExtraSummaryReport(txt));
 	}
 ;
