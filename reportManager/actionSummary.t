@@ -34,19 +34,6 @@ class ActionSummary: ReportSummary
 		return(true);
 	}
 
-/*
-	_checkMessageProp(report) {
-		if((report.action_ == nil) || (defaultMessageProp == nil))
-			return(true);
-
-		if(!report.ofKind(DefaultCommandReport)
-			&& !report.ofKind(FullCommandReport))
-			return(true);
-
-		return(report.messageProp_ == defaultMessageProp);
-	}
-*/
-
 	// The stock ReportSummary _mergeReport() method sorts by distinguisher,
 	// which we don't want to do here.
 	_mergeReports(t, data) {
@@ -55,6 +42,26 @@ class ActionSummary: ReportSummary
 	
 	// Construct the actual summary.
 	summarize(data) { return('{You/He} <<data.actionClause()>>.'); }
+
+	summarizeAnnouncement(r) {
+		local d, l;
+
+		if(r.dobjList_ == nil)
+			return(nil);
+
+		l = new Vector(r.dobjList_.length);
+		r.dobjList_.forEach(function(o) {
+			d = o.getBestDistinguisher(r.action_
+				.getResolvedObjList(DirectObject))
+				.reportName(o, 1);
+			l.appendUnique(d);
+		});
+
+		if((l.length == 1) || (l.length > 3))
+			return(getReportDistinguisher(r, nil));
+
+		return(stringLister.makeSimpleList(l));
+	}
 ;
 
 // Stock action failure summary.

@@ -109,10 +109,6 @@ class AlarmItem: Thing
 		action() {
 			inherited();
 			// The normal action report.
-/*
-			mainReport('As {you/he} pick{s} up {a dobj/him}, an
-				alarm sounds in the distance. ');
-*/
 			mainReport(&alarmReport);
 		}
 
@@ -251,6 +247,7 @@ roomThree: Room 'Room Three'
 	"This is room three.  Room zero is to the north and room 3B is
 	to the south. "
 	north = roomZero
+	east = roomThreeA
 	south = roomThreeB
 ;
 +Sign "If you <<inlineCommand('put pebbles in box')>> you should get one
@@ -259,6 +256,21 @@ roomThree: Room 'Room Three'
 +Pebble;
 +Pebble;
 +Box;
+
+roomThreeA: Room 'Room 3A'
+	"This is room 3A.  Room three is to the west. "
+	west = roomThree
+;
++Sign "If you try <<inlineCommand('put all in box')>> you should get:
+	an implicit action line describing taking the stones and opening
+	the box; an extra action report describing an alarm going off;
+	and the action report for putting the stones in the box. ";
++Pebble;
++Pebble;
++Box;
++Vase;
+++Pebble;
+++Pebble;
 
 roomThreeB: Room 'Room 3B'
 	"This is room 3B.  Room three is to the north, 3C is to the south,

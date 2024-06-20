@@ -61,3 +61,15 @@ modify ActionReportManager
 		TakeFailureSummary
 	]
 ;
+
+modify SelfReportManager
+	// Special summarizer classes for handling self-summary logic.
+	// You probably don't want to touch this unless you know what
+	// you're doing.
+	defaultReportSummaries = static [
+		SelfSummary,
+		SelfSummaryImplicit,
+		SelfSummaryExtra,
+		SelfSummaryAnnouncement
+	]
+;

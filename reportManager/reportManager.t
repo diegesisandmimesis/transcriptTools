@@ -136,13 +136,4 @@ class ActionReportManager: ReportManager
 
 // Report manager that handles dobjFor(Action) { summarize(data) {} }
 // logic.
-class SelfReportManager: ReportManager
-	// This is a list of bespoke summarizers designed to be used
-	// by us.  They live in reportManager/selfSummaries.t
-	defaultReportSummaries = static [
-		SelfSummary,
-		SelfSummaryImplicit,
-		SelfSummaryExtra,
-		SelfSummaryAnnouncement
-	]
-;
+class SelfReportManager: ReportManager;
