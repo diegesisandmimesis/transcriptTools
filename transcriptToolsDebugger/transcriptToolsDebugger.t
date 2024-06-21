@@ -10,6 +10,7 @@
 #include "transcriptTools.h"
 
 #ifdef __DEBUG
+#ifdef TRANSCRIPT_TOOLS_DEBUGGER
 
 class TTIOutputStream: OutputStream
 	writeFromStream(txt) { aioSay(txt); }
@@ -458,4 +459,5 @@ __transcriptToolDebugger: PreinitObject
 	}
 ;
 
+#endif // TRANSCRIPT_TOOLS_DEBUGGER
 #endif // __DEBUG

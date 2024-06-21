@@ -8,6 +8,7 @@
 #include "transcriptTools.h"
 
 #ifdef __DEBUG
+#ifdef TRANSCRIPT_TOOLS_DEBUGGER
 
 DefineSystemAction(TranscriptToolsStatus)
 	execSystemAction() {
@@ -194,4 +195,5 @@ VerbRule(TranscriptToolsDebuggerOff)
 	verbPhrase = 'transcript tools off'
 ;
 
+#endif // TRANSCRIPT_TOOLS_DEBUGGER
 #endif // __DEBUG

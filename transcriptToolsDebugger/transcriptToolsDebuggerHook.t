@@ -14,31 +14,7 @@
 #include "transcriptTools.h"
 
 #ifdef __DEBUG
-
-/*
-// Action-based hook
-// This works, but has the disadvantage that the debugger can only
-// be stated at one point in the turn lifecycle.
-// Another idea is to use the preprocess(), run(), and postprocess()
-// methods on TranscriptToolsTransform.  This is where we really
-// want the hooks to be, but those methods get fired whenever the
-// transcript is processed, which we DON'T want.
-// Maybe some kind of fancy locking mechanism?
-modify Action
-	transcriptToolsDebuggerAfterActionMain() {
-		if(ofKind(EventAction) || ofKind(SystemAction)
-			|| (parentAction != nil))
-			return;
-
-		__transcriptToolDebugger.afterActionMain();
-	}
-
-	afterActionMain() {
-		inherited();
-		transcriptToolsDebuggerAfterActionMain();
-	}
-;
-*/
+#ifdef TRANSCRIPT_TOOLS_DEBUGGER
 
 modify Action
 	transcriptToolsDebuggerAfterActionMain() {
@@ -78,4 +54,5 @@ modify transcriptTools
 	}
 ;
 
+#endif // TRANSCRIPT_TOOLS_DEBUGGER
 #endif // __DEBUG

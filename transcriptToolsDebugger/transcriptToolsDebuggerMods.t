@@ -8,6 +8,7 @@
 #include "transcriptTools.h"
 
 #ifdef __DEBUG
+#ifdef TRANSCRIPT_TOOLS_DEBUGGER
 
 modify Thing
 	_output(msg, svc?, ind?)
@@ -73,4 +74,5 @@ modify quoteOutputFilter
 
 #endif // BUFFERED_OUTPUT_FILTER_H
 
+#endif // TRANSCRIPT_TOOLS_DEBUGGER
 #endif // __DEBUG
