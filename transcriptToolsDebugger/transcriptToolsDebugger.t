@@ -12,10 +12,6 @@
 #ifdef __DEBUG
 #ifdef TRANSCRIPT_TOOLS_DEBUGGER
 
-class TTIOutputStream: DtkOutputStream;
-class TTIParseResult: DtkParseResult;
-class TTIObject: DtkObject _tt = getDebugger;
-
 class TTICommand: DtkCommand
 	_tt = (_dtk)
 	_indexOf(v) { return(_tt.transcript.reports_.indexOf(v)); }

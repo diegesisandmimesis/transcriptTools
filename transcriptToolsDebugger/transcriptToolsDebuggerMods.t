@@ -64,7 +64,6 @@ modify transcriptToolsPreinit
 	execute() {
 		inherited();
 		mainOutputStream.addOutputFilter(quoteOutputFilter);
-			//typographicalOutputFilter);
 	}
 ;
 
