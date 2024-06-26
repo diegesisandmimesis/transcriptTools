@@ -41,6 +41,10 @@ class TTICommand: DtkCommand
 			output('<<_tt.v2s(v.messageText_).htmlify()>>',
 				nil, ind + 1);
 	}
+	forEachReport(fn) {
+		if(!_tt || !_tt.transcript || !_tt.transcript.reports_) return;
+		_tt.transcript.forEachReport(fn);
+	}
 ;
 
 __transcriptToolDebugger: DtkDebugger
@@ -105,7 +109,7 @@ __transcriptToolDebugger: DtkDebugger
 		n = toInteger(n);
 
 		max = 0;
-		_tt.transcript.reports_.forEach(function(o) {
+		forEachReport(function(o) {
 			if(o.iter_ > max) max = o.iter_;
 		});
 
@@ -114,7 +118,7 @@ __transcriptToolDebugger: DtkDebugger
 			return;
 		}
 
-		_tt.transcript.reports_.forEach(function(o) {
+		forEachReport(function(o) {
 			if(o.iter_ == n)
 				_listReport(o);
 		});
@@ -133,7 +137,7 @@ __transcriptToolDebugger: DtkDebugger
 
 		i = nil;
 
-		_tt.transcript.reports_.forEach(function(o) {
+		forEachReport(function(o) {
 			if((i != nil) && (o.iter_ != i) && (_tt.spacer != nil))
 				output(_tt.spacer);
 			_listReport(o);
