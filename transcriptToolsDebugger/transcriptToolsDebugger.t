@@ -12,10 +12,14 @@
 #ifdef __DEBUG
 #ifdef TRANSCRIPT_TOOLS_DEBUGGER
 
+/*
 class TTIOutputStream: OutputStream
 	writeFromStream(txt) { aioSay(txt); }
 ;
+*/
+class TTIOutputStream: DtkOutputStream;
 
+/*
 // Data structure for handling debugger operators and args
 class TTIParseResult: object
 	cmd = nil
@@ -26,13 +30,45 @@ class TTIParseResult: object
 		arg = v1;
 	}
 ;
+*/
+class TTIParseResult: DtkParseResult;
 
+/*
 class TTIObject: object
 	// pointer to the debugger
 	_tt = __transcriptToolDebugger
 	output(msg, svc?, ind?) { _tt.output(msg, svc, ind); }
 ;
+*/
+class TTIObject: DtkObject _tt = getDebugger;
 
+class TTICommand: DtkCommand
+	_tt = (_dtk)
+	_indexOf(v) { return(_tt.transcript.reports_.indexOf(v)); }
+	_listReport(v, ind?) {
+		if(ind == nil) ind = 0;
+		output('<<toString(_indexOf(v))>>:<<toString(v.iter_)>>\t'
+			+ '<<toString(v)>>', nil, ind);
+		ind += 2;
+		if(v.action_)
+			output('action = <<toString(v.action_)>>', nil, ind);
+		if(v.isFailure)
+			output('isFailure = <<toString(v.isFailure)>>',
+				nil, ind);
+		if(v.isActionImplicit)
+			output('isActionImplicit = <<toString(v
+				.isActionImplicit)>>', nil, ind);
+		if(v.dobj_)
+			v.dobj_._debugDobj(ind);
+		if(v.messageProp_)
+			output('messageProp_:
+				&amp;<<toString(v.messageProp_)>>', nil, ind);
+		if(v.messageText_ && (v.messageText_.length > 0))
+			output('<<_tt.v2s(v.messageText_).htmlify()>>',
+				nil, ind + 1);
+	}
+;
+/*
 // Class for individual debugger commands
 class TTICommand: TTIObject
 	// command keyword.  that's the actual typed command, like "exit"
@@ -71,7 +107,168 @@ class TTICommand: TTIObject
 				nil, ind + 1);
 	}
 ;
+*/
 
+__transcriptToolDebugger: DtkDebugger
+	active = nil			// boolean flag. if set, run next turn
+
+	_actionFlag = nil
+
+	_activePreprocess = nil		// do we run during preprocessing
+	_activeRun = nil		// do we run during main processing
+	_activePostprocess = true	// do we run during postprocessing
+
+	// Convenience method for valToSymbol
+	v2s(v) { return(reflectionServices.valToSymbol(v)); }
+
+	// Active flag getter and setter
+	getActive() { return(active == true); }
+	setActive(v) { active = v; }
+
+	getActionFlag() { return(_actionFlag == true); }
+	setActionFlag(v) { _actionFlag = (v ? true : nil); }
+
+	runThisTurn(v) {
+		if(gAction.ofKind(SystemAction))
+			return(nil);
+		return(v && getActive);
+	}
+
+	preprocess(t, v) {
+		if(!runThisTurn(_activePreprocess))
+			return;
+		debugger(v, t, 'preprocessing');
+	}
+
+	run(t, v) {
+		if(!_activeRun || !getActive())
+			return;
+		if(!runThisTurn(_activeRun))
+			return;
+		debugger(v, t, 'processing');
+	}
+
+	postprocess(t, v) {
+		if(!runThisTurn(_activePostprocess))
+			return;
+		debugger(v, t, 'postprocessing');
+	}
+
+/*
+	// Main debugger loop
+	debugger(t, v?, lbl?) {
+		// See if we can set the lock; bail if we can't
+		if(!_setDebuggerLock(true))
+			return;
+
+		// Switch from the game output stream/transcript to
+		// the debugger stream/transcript
+		setDebugOutput(t, v);
+
+		if(lbl == nil)
+			lbl = 'unknown';
+
+		// Startup banner
+		banner('breakpoint in <<lbl>>');
+		banner('type HELP or ? for information on the interactive
+			debugger');
+
+		// Input/command loop
+		for(;;) {
+			// Display our command prompt
+			// IMPORTANT:  we can't use output() here because
+			//	that would put a newline after the prompt
+			aioSay('\n<<prompt>>');
+
+			// Keep accepting and processing commands until
+			// the command handler returns nil
+			cmd = inputManager.getInputLine(nil, nil);
+			if(handleDebuggerCommand(cmd) != true) {
+				// Switch the output stream and transcript
+				// back to where they were before we started
+				unsetDebugOutput(t, v);
+
+				// Clear our lock
+				_setDebuggerLock(nil);
+
+				// Return to the game
+				return;
+			}
+		}
+	}
+*/
+
+/*
+	// Command execution cycle, such as it is
+	handleDebuggerCommand(txt) {
+		local r;
+
+		if((r = parseDebuggerCommand(txt)) == nil)
+			return(true);
+
+		return(execDebuggerCommand(r));
+	}
+
+	// Attempt to parse the input string as a debugger command, possibly
+	// with an argument
+	// We return either nil (do nothing) or a TTIParseResult instance
+	// (holding the command and maybe arg)
+	parseDebuggerCommand(txt) {
+		local i;
+
+		// No command, nothing to do
+		if(txt == nil)
+			return(nil);
+
+		// Check our various "no command in input" regexen
+		for(i = 1; i <= _skipRexen.length; i++)
+			if(rexMatch(_skipRexen[i], txt) != nil)
+				return(nil);
+
+		// Special case:  see if the input is "?", and handle it
+		// as if the input was "help" if so
+		if(rexMatch(_helpRex, txt) != nil) {
+			ttiHelp.cmd();
+			return(nil);
+		}
+
+		// See if we have a command with no arg
+		if(rexMatch(_niladicRex, txt) != nil)
+			return(new TTIParseResult(rexGroup(1)[3].toLower()));
+
+		// See if we have a command and an arg
+		if(rexMatch(_unaryRex, txt) != nil)
+			return(new TTIParseResult(rexGroup(1)[3].toLower(),
+				rexGroup(2)[3].toLower()));
+
+		// Dunno what we got, complain
+		"\nUnknown debugger command.\n ";
+		return(nil);
+	}
+
+	// Try to execute the command
+	// Arg is a TTIParseResult instance
+	execDebuggerCommand(op) {
+		local i, k;
+
+		k = commands.keysToList();
+		for(i = 1; i <= k.length; i++) {
+			if(k[i] == op.cmd)
+				return(commands[k[i]].cmd(op.arg));
+		}
+
+		// Didn't match anything, complain
+		"\nUnknown debugger command.\n ";
+
+		return(true);
+	}
+
+	isNumber(v)
+		{ return(rexMatch('^<space>*(<Digit>+)<space>*$', v) != nil); }
+*/
+;
+
+/*
 // The debugger itself
 __transcriptToolDebugger: PreinitObject
 	active = nil			// boolean flag. if set, run next turn
@@ -183,16 +380,6 @@ __transcriptToolDebugger: PreinitObject
 			return;
 		debugger(t, v, 'postprocessing');
 	}
-
-/*
-	afterActionMain() {
-		if(!getActive())
-			return;
-		if(gAction.ofKind(TranscriptToolsDebuggerOffAction))
-			return;
-		debugger(gTranscript, gTranscript.reports_);
-	}
-*/
 
 	// Handle the debugger lock
 	_setDebuggerLock(v) {
@@ -336,10 +523,12 @@ __transcriptToolDebugger: PreinitObject
 	isNumber(v)
 		{ return(rexMatch('^<space>*(<Digit>+)<space>*$', v) != nil); }
 ;
+*/
+/*
 // Exit the debugger
 +TTICommand 'exit' 'exit the debugger'
 	"Use <q>exit</q> to exit the debugger and return to the game. "
-	cmd(arg?) {
+	cmd() {
 		"\nExiting debugger.\n ";
 		return(nil);
 	}
@@ -373,37 +562,37 @@ __transcriptToolDebugger: PreinitObject
 		return(true);
 	}
 ;
+*/
 +TTICommand 'iter' 'list reports with a specific iter_ value'
 	"Use <q>iter [number]</q> to list the reports with the given
 	numeric iter_ value.  The iter_ value is automatically assigned by
 	adv3, and is used to group reports related to a specific action or
 	sub-action. "
-	cmd(arg) {
+	argCount = 1
+	cmd(n) {
 		local max;
 
-		if((arg == nil) || !_tt.isNumber(arg)) {
+		if((n == nil) || !isNumber(n)) {
 			"\nInvalid iter number.\n ";
-			return(true);
+			return;
 		}
 
-		arg = toInteger(arg);
+		n = toInteger(n);
 
 		max = 0;
 		_tt.transcript.reports_.forEach(function(o) {
 			if(o.iter_ > max) max = o.iter_;
 		});
 
-		if((arg < 0) || (arg > max)) {
+		if((n < 0) || (n > max)) {
 			"\nInvalid iter number.\n ";
-			return(true);
+			return;
 		}
 
 		_tt.transcript.reports_.forEach(function(o) {
-			if(o.iter_ == arg)
+			if(o.iter_ == n)
 				_listReport(o);
 		});
-
-		return(true);
 	}
 ;
 // List the reports in the transcript
@@ -414,18 +603,17 @@ __transcriptToolDebugger: PreinitObject
 	report in the transcript (<q>2</q> in this case).  The second number
 	is the iter_ value for the report (<q>1</q> in this case).  Note that
 	the report index counts from 1 and the iter_ value counts from 0. "
-	cmd(arg?) {
+	cmd() {
 		local i;
 
 		i = nil;
+
 		_tt.transcript.reports_.forEach(function(o) {
 			if((i != nil) && (o.iter_ != i) && (_tt.spacer != nil))
 				output(_tt.spacer);
 			_listReport(o);
 			i = o.iter_;
 		});
-
-		return(true);
 	}
 ;
 +TTICommand 'out' 'output the reports in transcript'
@@ -433,29 +621,27 @@ __transcriptToolDebugger: PreinitObject
 	display the message text for each report.  Note that the debugger
 	will <b>not</b> use any output filters while displaying reports,
 	so the text won't be formatted the same way it is in-game. "
-	cmd(arg?) {
+	cmd() {
 		_tt.transcript.showReports(true);
-		return(true);
 	}
 ;
 +TTICommand 'show' 'show the numbered report'
 	"Use <q>show</q> to display the details of a single numbered report. "
-	cmd(arg?) {
-		if((arg == nil) || !_tt.isNumber(arg)) {
+	argCount = 1
+	cmd(n) {
+		if((n == nil) || !isNumber(n)) {
 			"\nInvalid report number.\n ";
-			return(true);
+			return;
 		}
 
-		arg = toInteger(arg);
+		n = toInteger(n);
 
-		if((arg < 1) || (arg > _tt.transcript.reports_.length)) {
+		if((n < 1) || (n > _tt.transcript.reports_.length)) {
 			"\nInvalid report number.\n ";
-			return(true);
+			return;
 		}
 
-		_listReport(_tt.transcript.reports_[arg]);
-
-		return(true);
+		_listReport(_tt.transcript.reports_[n]);
 	}
 ;
 

@@ -13,6 +13,13 @@
 
 #ifdef __DEBUG
 #ifdef TRANSCRIPT_TOOLS_DEBUGGER
+
+#ifndef DTK
+#error "Compiling with -D TRANSCRIPT_TOOLS_DEBUGGER requires also using"
+#error "-D DTK (and this module can't force that, because the dependencies"
+#error "need to be compiled with it as well."
+#endif // DTK
+
 #include "bufferedOutputFilter.h"
 #ifndef BUFFERED_OUTPUT_FILTER_H
 #error "This module requires the bufferedOutputFilter module."
@@ -21,6 +28,16 @@
 #error "transcriptTools is in /home/user/tads/transcriptTools, then"
 #error "bufferedOutputFilter should be in /home/user/tads/bufferedOutputFilter ."
 #endif // BUFFERED_OUTPUT_FILTER_H
+
+#include "debugToolKit.h"
+#ifndef DEBUG_TOOL_KIT_H
+#error "This module requires the debugToolKit module."
+#error "https://github.com/diegesisandmimesis/debugToolKit"
+#error "It should be in the same parent directory as this module.  So if"
+#error "transcriptTools is in /home/user/tads/transcriptTools, then"
+#error "debugToolKit should be in /home/user/tads/debugToolKit ."
+#endif // DEBUG_TOOL_KIT_H
+
 #endif // TRANSCRIPT_TOOLS_DEBUGGER
 #endif // __DEBUG
 

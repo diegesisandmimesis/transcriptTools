@@ -8,6 +8,8 @@
 -lib adv3/adv3
 -lib syslog/syslog
 -lib bufferedOutputFilter/bufferedOutputFilter
+-lib debugToolKit/debugToolKit
 -lib ../transcriptTools
 -source src/sample.t
 -source reflect.t
+-source dynfunc.t
