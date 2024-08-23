@@ -66,3 +66,4 @@ class OrLister: SimpleLister
 // Instances of the above classes
 equivalentLister: EquivalentLister;
 equivalentOrLister: EquivalentLister, OrLister;
+stringOrLister: OrLister;

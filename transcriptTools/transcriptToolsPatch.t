@@ -111,12 +111,6 @@ modify LookBehindAction
 	summarizeExtraDobjProp = &summarizeExtraDobjLookBehind
 	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjLookBehind
 	whenSummarizedDobjProp = &whenSummarizedDobjLookBehind;
-modify ParseDebugAction
-	summarizeDobjProp = &summarizeDobjParseDebug
-	summarizeImplicitDobjProp = &summarizeImplicitDobjParseDebug
-	summarizeExtraDobjProp = &summarizeExtraDobjParseDebug
-	summarizeAnnouncementDobjProp = &summarizeAnnouncementDobjParseDebug
-	whenSummarizedDobjProp = &whenSummarizedDobjParseDebug;
 modify CleanAction
 	summarizeDobjProp = &summarizeDobjClean
 	summarizeImplicitDobjProp = &summarizeImplicitDobjClean
