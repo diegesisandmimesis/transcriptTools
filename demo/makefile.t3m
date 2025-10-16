@@ -9,6 +9,7 @@
 -lib syslog/syslog
 -lib bufferedOutputFilter/bufferedOutputFilter
 -lib debugToolKit/debugToolKit
+-lib debugToolKit/debugToolKit
 -lib ../transcriptTools
 -source src/sample.t
 -source reflect.t

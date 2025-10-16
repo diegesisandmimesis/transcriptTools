@@ -57,3 +57,35 @@ class CleanupExtraSummaryReports: TranscriptCleanup
 		}
 	}
 ;
+
+class CleanupMainCommandReports: TranscriptTool
+	run(t, vec) {
+		local l;
+
+		l = new Vector();
+		vec.forEach({ x: l.appendUnique(x.iter_) });
+		l.forEach({ x: _runIter(x, t, vec) });
+	}
+
+	_runIter(n, t, vec) {
+		local i, idx, l, r, txt;
+
+		l = vec.subset({ x: x.ofKind(MainCommandReport) && x.iter_ == n });
+		if(l.length < 2)
+			return;
+
+		txt = '';
+		idx = nil;
+		for(i = 1; i <= l.length; i++) {
+			txt = txt + l[i].messageText_;
+			if(idx == nil)
+				idx = vec.indexOf(l[i]);
+			t.removeReport(l[i]);
+		}
+		if((idx == nil) || (txt.length == 0))
+			return;
+		r = new MainCommandReport(txt);
+		r.iter_ = n;
+		vec.insertAt(idx, r);
+	}
+;

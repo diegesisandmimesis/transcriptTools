@@ -25,6 +25,7 @@ transcriptToolsModuleID: ModuleID {
 modify transcriptTools
 	defaultTools = static [
 		MarkFailures,
+		CleanupMainCommandReports,
 		TranscriptReportManager,
 		ImplicitGrouper,
 		CleanupSingleAnnouncements,
