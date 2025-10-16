@@ -58,35 +58,64 @@ class CleanupExtraSummaryReports: TranscriptCleanup
 	}
 ;
 
-class CleanupMainCommandReports: TranscriptTool
-	run(t, vec) {
+// Cleanup MainCommandReport instances.
+// When a double-quoted string contains an inline expression (via <<>>),
+// this causes new MainCommandReports to be inserted into the transcript.
+// For exmaple: "foo <<bar>> baz" results in THREE MainCommandReports
+// being in the transcript:  one with the message text 'foo ', one with
+// he contents of bar, and one with ' baz'.
+// This widget merges the text of multiple MainCommandReports into a
+// single instance.
+class CleanupMainCommandReports: TranscriptPreprocessor
+
+	preprocess(t, vec) {
 		local l;
 
+		// We handle each iter_ value separately.
 		l = new Vector();
 		vec.forEach({ x: l.appendUnique(x.iter_) });
 		l.forEach({ x: _runIter(x, t, vec) });
 	}
 
+	// Handle iter_ value n.
 	_runIter(n, t, vec) {
-		local i, idx, l, r, txt;
+		local i, l, r, txt;
 
+		// Make sure we have more than one MainCommandReport for
+		// this iter_.
 		l = vec.subset({ x: x.ofKind(MainCommandReport)
 			&& x.iter_ == n });
 		if(l.length < 2)
 			return;
 
-		txt = '';
-		idx = nil;
+		// Start out with an empty string.
+		txt = new StringBuffer();
+
+		// This is to hold the first MainCommandReport we're
+		// summarizing.  We'll put the updated message text on
+		// it and remove the others.
+		r = nil;
+
+		// Go through the MainCommandReport instances.
 		for(i = 1; i <= l.length; i++) {
-			txt = txt + l[i].messageText_;
-			if(idx == nil)
-				idx = vec.indexOf(l[i]);
-			t.removeReport(l[i]);
+			// Add this report's message text to the buffer.
+			txt.append(l[i].messageText_);
+
+			// If this is the first report we've summarized,
+			// remember it.  Otherwise remove it from the
+			// transcript.
+			if(r == nil)
+				r = l[i];
+			else
+				t.removeReport(l[i]);
 		}
-		if((idx == nil) || (txt.length == 0))
+
+		// If we matched no reports or got no message text, fail.
+		if((r == nil) || (txt.length == 0))
 			return;
-		r = new MainCommandReport(txt);
-		r.iter_ = n;
-		vec.insertAt(idx, r);
+
+		// Set the complete message text on the first, now only,
+		// report.
+		r.messageText_ = toString(txt);
 	}
 ;
