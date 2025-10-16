@@ -70,7 +70,8 @@ class CleanupMainCommandReports: TranscriptTool
 	_runIter(n, t, vec) {
 		local i, idx, l, r, txt;
 
-		l = vec.subset({ x: x.ofKind(MainCommandReport) && x.iter_ == n });
+		l = vec.subset({ x: x.ofKind(MainCommandReport)
+			&& x.iter_ == n });
 		if(l.length < 2)
 			return;
 
